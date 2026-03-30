@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tasks - Academic Concierge</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#004ac6",
+              "on-secondary-container": "#fffbff",
+              "on-primary-fixed": "#00174b",
+              "secondary-fixed": "#eaddff",
+              "inverse-surface": "#2d3133",
+              "on-surface-variant": "#434655",
+              "on-tertiary-fixed-variant": "#3a485b",
+              "secondary-container": "#8a4cfc",
+              "inverse-primary": "#b4c5ff",
+              "surface-container": "#eceef0",
+              "surface-container-low": "#f2f4f6",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e6e8ea",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-container": "#606e83",
+              "on-primary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "primary-fixed-dim": "#b4c5ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e0e3e5",
+              "outline": "#737686",
+              "on-background": "#191c1e",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#48566a",
+              "surface-bright": "#f7f9fb",
+              "inverse-on-surface": "#eff1f3",
+              "surface": "#f7f9fb",
+              "outline-variant": "#c3c6d7",
+              "on-error-container": "#93000a",
+              "tertiary-fixed": "#d5e3fc",
+              "tertiary-fixed-dim": "#b9c7df",
+              "on-error": "#ffffff",
+              "on-primary-container": "#eeefff",
+              "primary-container": "#2563eb",
+              "secondary": "#712ae2",
+              "background": "#f7f9fb",
+              "surface-tint": "#0053db",
+              "on-tertiary-fixed": "#0d1c2e",
+              "on-surface": "#191c1e",
+              "on-tertiary-container": "#e9f0ff",
+              "secondary-fixed-dim": "#d2bbff",
+              "on-secondary-fixed-variant": "#5a00c6",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-secondary-fixed": "#25005a",
+              "surface-dim": "#d8dadc"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="minimalist avatar of a young academic professional with clean lines and soft blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0Swz-7qBLfFVkLLHGKjgUw7xuG77ItXBuN9rv_YXpmXOSG1rFfS6fG-bqbLO9lEyQu7MS_wF1ZSdLHLYaxoZxq3cuFLzaulE8TrdUoONQyXvY0rxZmv-P_hup6cxaG8TA71GTKyUKRA1z2lulLZozEJmiXErA_9Z4T5MYLIJRY4V10b5NwlOrqpTfrnLM1rwCdmAwfMn81EhYF7JfwcqHWRHQcx5As7-AdrRFEkwPmq7a4twuQ7toK2ezCWqvkIQEhrb-eaz77es"/>
+</div>
+<span class="text-blue-700 dark:text-blue-400 font-extrabold tracking-tighter font-headline text-lg">Academic Concierge</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-6 max-w-lg mx-auto">
+<!-- Section Header -->
+<div class="mb-8">
+<span class="text-[10px] font-medium uppercase tracking-widest text-primary mb-1 block">Your Curriculum</span>
+<h1 class="text-3xl font-extrabold tracking-tight text-on-surface">Tasks</h1>
+</div>
+<!-- Filters Asymmetric Layout -->
+<div class="flex gap-3 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex items-center gap-2 px-5 py-3 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/15 whitespace-nowrap active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary text-lg">filter_list</span>
+<span class="text-sm font-semibold">Course</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-3 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/15 whitespace-nowrap active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary text-lg">calendar_today</span>
+<span class="text-sm font-semibold">Deadline</span>
+</button>
+</div>
+<!-- Task List: Zero-Line Principle -->
+<div class="space-y-6">
+<!-- Pending Task -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm ring-1 ring-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider rounded-full">
+                        Pending
+                    </div>
+<div class="text-right">
+<span class="block text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Due In</span>
+<span class="text-sm font-bold text-on-surface">2 Days</span>
+</div>
+</div>
+<div class="mb-6">
+<span class="text-xs font-medium text-tertiary block mb-1">Advanced Macroeconomics</span>
+<h3 class="text-xl font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">Market Equilibrium Analysis</h3>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-3 px-4 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+                        Submit
+                    </button>
+<button class="px-4 py-3 bg-surface-container-high text-on-surface text-sm font-bold rounded-xl active:scale-95 transition-transform">
+                        Details
+                    </button>
+</div>
+</div>
+<!-- Submitted Task -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm ring-1 ring-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                        Submitted
+                    </div>
+<div class="text-right">
+<span class="block text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Turned In</span>
+<span class="text-sm font-bold text-green-600">Oct 12</span>
+</div>
+</div>
+<div class="mb-6">
+<span class="text-xs font-medium text-tertiary block mb-1">Modern Ethics</span>
+<h3 class="text-xl font-bold text-on-surface leading-tight opacity-70 group-hover:opacity-100 transition-opacity">Deontological Frameworks</h3>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-3 px-4 bg-surface-container-highest text-on-surface text-sm font-bold rounded-xl active:scale-95 transition-transform">
+                        Review Submission
+                    </button>
+</div>
+</div>
+<!-- Late Task -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm ring-1 ring-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="px-3 py-1 bg-error-container text-on-error-container text-[10px] font-bold uppercase tracking-wider rounded-full">
+                        Late
+                    </div>
+<div class="text-right">
+<span class="block text-[10px] text-error/40 uppercase font-bold tracking-tighter">Deadline</span>
+<span class="text-sm font-bold text-error">Oct 10</span>
+</div>
+</div>
+<div class="mb-6">
+<span class="text-xs font-medium text-tertiary block mb-1">Quantum Physics II</span>
+<h3 class="text-xl font-bold text-on-surface leading-tight">Wave-Particle Duality Lab Report</h3>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-3 px-4 bg-primary/90 text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/10 active:scale-95 transition-transform">
+                        Submit Late
+                    </button>
+<button class="px-4 py-3 bg-surface-container-high text-on-surface text-sm font-bold rounded-xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-lg align-middle">mail</span>
+</button>
+</div>
+</div>
+<!-- Upcoming Task (Tonal Depth) -->
+<div class="bg-surface-container-low/50 border border-dashed border-outline-variant/30 rounded-xl p-6 transition-colors">
+<div class="flex justify-between items-start mb-4 opacity-50">
+<div class="px-3 py-1 bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-wider rounded-full">
+                        Upcoming
+                    </div>
+<div class="text-right">
+<span class="block text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Starts In</span>
+<span class="text-sm font-bold text-on-surface">5 Days</span>
+</div>
+</div>
+<div class="mb-2 opacity-60">
+<span class="text-xs font-medium text-tertiary block mb-1">Global Business Strat</span>
+<h3 class="text-xl font-bold text-on-surface leading-tight">Supply Chain Case Study</h3>
+</div>
+<div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest mt-4">
+<span>Unlock content</span>
+<span class="material-symbols-outlined text-sm">lock</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-slate-950 shadow-[0px_-4px_20px_rgba(0,0,0,0.05)] rounded-t-2xl border-t border-slate-200/15 dark:border-slate-800/15">
+<div class="w-full flex justify-around items-center px-4 pb-6 pt-3">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-blue-500 dark:hover:text-blue-300 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-xl px-3 py-1 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">assignment</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-blue-500 dark:hover:text-blue-300 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-blue-500 dark:hover:text-blue-300 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">trending_up</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-blue-500 dark:hover:text-blue-300 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

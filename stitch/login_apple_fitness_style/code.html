@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholar Metric - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#c3c6d7",
+              "on-surface": "#191c1e",
+              "surface-container-high": "#e6e8ea",
+              "secondary": "#712ae2",
+              "secondary-container": "#8a4cfc",
+              "on-primary": "#ffffff",
+              "inverse-primary": "#b4c5ff",
+              "on-secondary-fixed-variant": "#5a00c6",
+              "tertiary-container": "#606e83",
+              "surface-dim": "#d8dadc",
+              "secondary-fixed-dim": "#d2bbff",
+              "on-secondary-container": "#fffbff",
+              "on-background": "#191c1e",
+              "on-surface-variant": "#434655",
+              "primary-container": "#2563eb",
+              "surface-variant": "#e0e3e5",
+              "surface-tint": "#0053db",
+              "inverse-surface": "#2d3133",
+              "surface-bright": "#f7f9fb",
+              "outline": "#737686",
+              "on-error-container": "#93000a",
+              "primary": "#004ac6",
+              "on-tertiary": "#ffffff",
+              "surface-container": "#eceef0",
+              "surface-container-lowest": "#ffffff",
+              "background": "#f7f9fb",
+              "surface": "#f7f9fb",
+              "primary-fixed": "#dbe1ff",
+              "inverse-on-surface": "#eff1f3",
+              "tertiary-fixed-dim": "#b9c7df",
+              "tertiary": "#48566a",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-tertiary-fixed": "#0d1c2e",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#eeefff",
+              "on-tertiary-fixed-variant": "#3a485b",
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-primary-fixed": "#00174b",
+              "on-secondary-fixed": "#25005a",
+              "secondary-fixed": "#eaddff",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-fixed": "#d5e3fc",
+              "surface-container-highest": "#e0e3e5",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .apple-fitness-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        input:focus {
+            outline: none !important;
+            box-shadow: none !important;
+            border-bottom-color: #004ac6 !important;
+        }
+        body {
+            background-color: #f7f9fb;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-on-surface antialiased overflow-hidden">
+<div class="min-h-screen flex flex-col px-8 md:px-24 lg:px-32 max-w-7xl mx-auto">
+<header class="pt-12 md:pt-20 flex justify-between items-center">
+<h1 class="font-headline font-extrabold text-2xl tracking-tighter text-on-surface">
+                Scholar Metric
+            </h1>
+</header>
+<main class="flex-grow flex flex-col justify-center max-w-md w-full">
+<div class="space-y-2 mb-16">
+<span class="font-label text-primary font-bold uppercase tracking-[0.2em] text-[10px]">
+                    Academic Concierge
+                </span>
+<h2 class="font-headline font-extrabold text-5xl md:text-6xl tracking-tight text-on-surface leading-tight">
+                    Welcome Back.
+                </h2>
+</div>
+<form class="space-y-12">
+<div class="space-y-8">
+<div class="relative group">
+<label class="block font-label text-[11px] font-semibold text-slate-400 uppercase tracking-widest mb-1 transition-colors group-focus-within:text-primary" for="email">
+                            Email Address
+                        </label>
+<input class="w-full bg-transparent border-0 border-b border-slate-200 py-4 px-0 text-lg font-medium placeholder:text-slate-300 transition-all focus:ring-0 focus:border-primary" id="email" placeholder="name@university.edu" type="email"/>
+</div>
+<div class="relative group">
+<label class="block font-label text-[11px] font-semibold text-slate-400 uppercase tracking-widest mb-1 transition-colors group-focus-within:text-primary" for="password">
+                            Password
+                        </label>
+<input class="w-full bg-transparent border-0 border-b border-slate-200 py-4 px-0 text-lg font-medium placeholder:text-slate-300 transition-all focus:ring-0 focus:border-primary" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="pt-4 space-y-6">
+<button class="w-full h-16 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-lg rounded-xl shadow-lg shadow-primary/10 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 group">
+                        Login
+                        <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<div class="flex flex-col items-center gap-4 py-4">
+<a class="text-slate-500 font-medium text-sm hover:text-primary transition-colors" href="#">
+                            Forgot Password?
+                        </a>
+<div class="flex items-center gap-2 text-slate-400 text-sm">
+<span>New here?</span>
+<a class="text-primary font-bold hover:underline underline-offset-4" href="#">
+                                Create Account
+                            </a>
+</div>
+</div>
+</div>
+</form>
+</main>
+<footer class="pb-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-8">
+<div class="flex -space-x-3">
+<img alt="User" class="w-10 h-10 rounded-full border-4 border-background object-cover" data-alt="portrait of a young female college student with glasses smiling softly in a library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEqOM3H_ZvlnDQgggvtmafno0yp9A0gV2PFvttDGZIwOcG43ADVQELQfP3-BRISXe6sjHkzZwQoA1JSD-DtwK3TSnxnX9gAom6jqEFO-wHS3v2zeDAUZBXPjOQRVG51xBNcbdYBw6-Ixn6kal5sdjS6hDLBEAdnEJNrw0eZZsweGwmNRN01-ZQod19F8YdWdokjpFKT3Oys2pWpKMmUtPkSqTeppPqkjTL6dLldBzRCGBju6qc9w5fkBXomGdXX1Vv-gr1g6SYvnI"/>
+<img alt="User" class="w-10 h-10 rounded-full border-4 border-background object-cover" data-alt="close-up portrait of a thoughtful male student with curly hair against a neutral gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgMBdjINqqFXUSR9kCd-_1Sr5rI1QL61Ftb9JJ_z9vU8MGPEvaY0lOs8N-laUWl9ssF2XssG3NL5BVaTxleqlLFG9xjN_P6cF5dQFSfWk5wGiNDgPMcmrIgnzvko22ynldCyUcfYBITpsUTwwIlXiZOMQDzitPDFXtzq1D1FYpansJVKPqiqISXeiayz51IoaO5ohshcaM7em-XEJ6vklnyogKoSARcdpMIEMdXIIH9w0s5_Aqyxo-d7gxyECJ56crq-J92uzgg7g"/>
+<img alt="User" class="w-10 h-10 rounded-full border-4 border-background object-cover" data-alt="middle-aged male academic professor with a kind expression and professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-aOBxCiIAok2TNEwJkvMhI_mwOoGDs1O5mINkpPGvUWdmGuJQeIQxG6b4ZYOy4JQxWWby4gYqtYHv3edq9mzlrSRd9ETIMdydXKVd7Jz9zrvptKpI8ca0fp04fii_p-BRySd_DOBS2-72et885wsbhH_Riy4DwLJR0PZztZ34dAKaqr8chXKYGsokmewwlqdW9tARSKGJh6YkgDNokpuoHXWU5_KMSnmMWSu7joircd4VPgzyRdu4726h2TYYz1Ye_Sbc-oj9FMc"/>
+<div class="w-10 h-10 rounded-full border-4 border-background bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-slate-500">
+                        +12k
+                    </div>
+</div>
+<p class="text-slate-400 text-xs font-medium tracking-wide">
+                    Join 12,000+ researchers globally
+                </p>
+</div>
+<div class="flex gap-6">
+<a class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-on-surface transition-colors" href="#">Privacy</a>
+<a class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-on-surface transition-colors" href="#">Terms</a>
+<a class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-on-surface transition-colors" href="#">Support</a>
+</div>
+</footer>
+</div>
+<div class="fixed top-0 right-0 w-1/2 h-full -z-10 pointer-events-none overflow-hidden hidden lg:block">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-40"></div>
+<div class="absolute top-1/4 right-[-10%] w-[120%] h-[120%] bg-white rounded-full blur-[120px] opacity-60"></div>
+</div>
+</body></html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Universities Management | Command Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#400100",
+              "tertiary-fixed-dim": "#9ecaff",
+              "on-primary": "#ffffff",
+              "surface-tint": "#be0f02",
+              "primary-fixed-dim": "#ffb4a7",
+              "secondary": "#a63a2a",
+              "on-tertiary-fixed": "#001d36",
+              "surface": "#fcf9f8",
+              "secondary-container": "#ff7c67",
+              "on-surface-variant": "#5c403b",
+              "primary-fixed": "#ffdad4",
+              "surface-dim": "#dcd9d9",
+              "outline-variant": "#e6bdb6",
+              "on-tertiary-container": "#fffeff",
+              "inverse-primary": "#ffb4a7",
+              "error-container": "#ffdad6",
+              "outline": "#916f69",
+              "on-secondary-container": "#721409",
+              "tertiary-container": "#0079ca",
+              "surface-bright": "#fcf9f8",
+              "surface-container-high": "#ebe7e7",
+              "on-secondary-fixed": "#400100",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#862215",
+              "on-tertiary-fixed-variant": "#00497d",
+              "secondary-fixed-dim": "#ffb4a7",
+              "on-background": "#1c1b1b",
+              "inverse-on-surface": "#f3f0ef",
+              "tertiary-fixed": "#d1e4ff",
+              "surface-container": "#f0edec",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed": "#ffdad4",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#920600",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-container": "#fffdff",
+              "primary": "#bb0c01",
+              "primary-container": "#e02e1b",
+              "surface-container-low": "#f6f3f2",
+              "surface-variant": "#e5e2e1",
+              "on-surface": "#1c1b1b",
+              "surface-container-highest": "#e5e2e1",
+              "on-error-container": "#93000a",
+              "inverse-surface": "#313030",
+              "background": "#fcf9f8",
+              "tertiary": "#0060a1",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar (from JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-stone-100 dark:bg-stone-900 flex flex-col py-6 px-4 z-50">
+<div class="mb-10 px-2">
+<h1 class="text-xl font-black tracking-tighter text-red-700 dark:text-red-600">Command Console</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-bold mt-1">Precision Authority</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-red-700 dark:text-red-500 font-bold border-r-2 border-red-700 dark:border-red-600 bg-stone-200/50 dark:bg-stone-800/50 font-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+                Universities
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Users
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="shield_person">shield_person</span>
+                Roles &amp; Permissions
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+                Announcements
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="health_and_safety">health_and_safety</span>
+                System Health
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+                Logs &amp; Audit
+            </a>
+</nav>
+<div class="mt-auto space-y-1 border-t border-stone-200/50 pt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- TopAppBar (from JSON) -->
+<header class="fixed top-0 right-0 left-64 h-16 z-40 bg-white/85 dark:bg-stone-950/85 backdrop-blur-md border-b border-stone-200/20 dark:border-stone-800/20 shadow-sm dark:shadow-none flex items-center justify-between px-8 w-full">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-sm">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-xs font-sans uppercase tracking-widest text-on-surface placeholder:text-stone-400 pl-10" placeholder="GLOBAL COMMAND SEARCH..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-stone-500 hover:text-red-700 transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-stone-500 hover:text-red-700 transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-stone-200/20">
+<div class="text-right">
+<p class="text-[10px] font-bold uppercase tracking-tighter leading-none">Admin User</p>
+<p class="text-[9px] text-stone-400 uppercase tracking-widest">Level 01 Auth</p>
+</div>
+<img class="w-8 h-8 rounded-full border border-stone-200 object-cover" data-alt="Close up portrait of a middle-aged male administrator with glasses, professional lighting, corporate headshot style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwtq-KeiUdDsFLhcJku9FOPn0w5vmZWWu057SfhhQd2bQzUqJAN3LZaIEqpiyoTC2qT119S9lVBQE6WetVz9Y2Mn9-WTyoH-8fYapZg81sbffwrybN17hzVkik5wOp2PQL48DOqFaJvkYogKLplnt3g4RvXjvjKfk7mMv7IWZM_rZZ1vgkBmBnqx47mJ8_Ai6eRaAzoCyQk4GkX4rMTjZ39aPIkC4-HKWh8BkgdcjSfOXmtebLTbuSHw3jSpGXWuaT_VnWV6KCyOI"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-8 min-h-screen">
+<!-- Dashboard Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<nav class="flex items-center gap-2 mb-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<span class="hover:text-primary cursor-pointer">System</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-on-surface">Universities</span>
+</nav>
+<h2 class="text-4xl font-black tracking-tighter text-on-surface leading-tight">Universities</h2>
+<p class="text-on-surface-variant text-sm max-w-xl mt-1 font-medium italic opacity-80">Managing institutional authority and academic infrastructure across the global network.</p>
+</div>
+<button class="bg-gradient-to-b from-primary to-primary-container text-on-primary px-6 py-3 rounded-sm font-bold text-xs uppercase tracking-[0.15em] shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-3">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                Register New University
+            </button>
+</div>
+<!-- Analytical Bento-Lite Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-container-low p-5 rounded-sm flex flex-col justify-between h-32">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Total Managed</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black tracking-tighter">142</span>
+<span class="text-[10px] font-bold text-primary">+3 THIS MO</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-sm flex flex-col justify-between h-32">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Active Students</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black tracking-tighter">842.1K</span>
+<span class="text-[10px] font-bold text-tertiary">STABLE</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-sm flex flex-col justify-between h-32">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Avg Utilization</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black tracking-tighter">94%</span>
+<span class="text-[10px] font-bold text-primary">CRITICAL</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-sm flex flex-col justify-between h-32">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Revenue Flow</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black tracking-tighter">$12.4M</span>
+<span class="text-[10px] font-bold text-stone-500">NET ANNU.</span>
+</div>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="bg-surface-container-low p-2 rounded-sm mb-4 flex flex-wrap items-center gap-4">
+<div class="flex-1 min-w-[300px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/60 text-lg">filter_list</span>
+<input class="w-full bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary/20 text-[11px] font-bold uppercase tracking-widest py-3 pl-10 rounded-sm" placeholder="FILTER BY NAME, REGION, OR ID..." type="text"/>
+</div>
+<select class="bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary/20 text-[11px] font-bold uppercase tracking-widest py-3 px-6 rounded-sm min-w-[160px]">
+<option>ALL REGIONS</option>
+<option>NORTH AMERICA</option>
+<option>EUROPE</option>
+<option>ASIA PACIFIC</option>
+</select>
+<select class="bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary/20 text-[11px] font-bold uppercase tracking-widest py-3 px-6 rounded-sm min-w-[160px]">
+<option>ALL STATUSES</option>
+<option>ACTIVE ONLY</option>
+<option>MAINTENANCE</option>
+<option>SUSPENDED</option>
+</select>
+<button class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-sm font-bold text-[11px] uppercase tracking-widest hover:bg-surface-variant transition-colors">
+                Apply Filters
+            </button>
+</div>
+<!-- High-Density Data Table -->
+<div class="bg-surface-container-lowest overflow-hidden">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="px-6 py-4 text-left text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Institution Name</th>
+<th class="px-6 py-4 text-left text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Region</th>
+<th class="px-6 py-4 text-left text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Student Pop.</th>
+<th class="px-6 py-4 text-left text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Programs</th>
+<th class="px-6 py-4 text-left text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">System Status</th>
+<th class="px-6 py-4 text-right text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Commands</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-stone-100/50">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-extrabold tracking-tight text-on-surface group-hover:text-primary transition-colors">Harvard University</span>
+<span class="text-[10px] font-medium text-on-surface-variant uppercase tracking-wider">ID: UNIV-001-USA</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[11px] font-bold uppercase text-on-surface-variant">North America</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">23,120</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">148</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] font-black uppercase text-emerald-600 tracking-widest">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600" title="View Analytics">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span>
+</button>
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 hover:bg-red-50 rounded-sm text-red-600" title="Suspend Authority">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-extrabold tracking-tight text-on-surface group-hover:text-primary transition-colors">University of Oxford</span>
+<span class="text-[10px] font-medium text-on-surface-variant uppercase tracking-wider">ID: UNIV-042-UK</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[11px] font-bold uppercase text-on-surface-variant">Europe</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">24,515</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">192</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+<span class="text-[10px] font-black uppercase text-amber-600 tracking-widest">Maintenance</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span>
+</button>
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 hover:bg-red-50 rounded-sm text-red-600">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-extrabold tracking-tight text-on-surface group-hover:text-primary transition-colors">Tsinghua University</span>
+<span class="text-[10px] font-medium text-on-surface-variant uppercase tracking-wider">ID: UNIV-088-CN</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[11px] font-bold uppercase text-on-surface-variant">Asia Pacific</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">53,300</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">310</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] font-black uppercase text-emerald-600 tracking-widest">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span>
+</button>
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 hover:bg-red-50 rounded-sm text-red-600">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-extrabold tracking-tight text-on-surface group-hover:text-primary transition-colors">Technical University of Berlin</span>
+<span class="text-[10px] font-medium text-on-surface-variant uppercase tracking-wider">ID: UNIV-112-DE</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[11px] font-bold uppercase text-on-surface-variant">Europe</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">35,570</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">115</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+<span class="text-[10px] font-black uppercase text-red-700 tracking-widest">Suspended</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span>
+</button>
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 bg-red-700 text-white rounded-sm shadow-sm">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="group hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-extrabold tracking-tight text-on-surface group-hover:text-primary transition-colors">Stanford University</span>
+<span class="text-[10px] font-medium text-on-surface-variant uppercase tracking-wider">ID: UNIV-005-USA</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-[11px] font-bold uppercase text-on-surface-variant">North America</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">17,249</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold tracking-tighter">204</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] font-black uppercase text-emerald-600 tracking-widest">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span>
+</button>
+<button class="p-1.5 hover:bg-stone-200 rounded-sm text-stone-600">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 hover:bg-red-50 rounded-sm text-red-600">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Bulk Commands -->
+<div class="mt-8 flex items-center justify-between border-t border-stone-200/50 pt-6">
+<div class="flex items-center gap-4">
+<p class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Selected: 0 institutions</p>
+<div class="h-4 w-px bg-stone-200"></div>
+<div class="flex gap-2">
+<button class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 hover:text-primary transition-colors disabled:opacity-30" disabled="">Export CSV</button>
+<button class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 hover:text-red-600 transition-colors disabled:opacity-30" disabled="">Bulk Suspend</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Page 1 of 12</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center border border-stone-200 hover:bg-surface-container-low rounded-sm transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-primary bg-primary text-on-primary rounded-sm font-bold text-xs">1</button>
+<button class="w-8 h-8 flex items-center justify-center border border-stone-200 hover:bg-surface-container-low rounded-sm text-xs font-bold transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center border border-stone-200 hover:bg-surface-container-low rounded-sm text-xs font-bold transition-colors">3</button>
+<button class="w-8 h-8 flex items-center justify-center border border-stone-200 hover:bg-surface-container-low rounded-sm transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Drill-down Insight Panel (Contextual) -->
+<div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-stone-900 text-white p-8 rounded-sm relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-red-900/40 to-transparent opacity-50"></div>
+<div class="relative z-10">
+<h3 class="text-[11px] font-black uppercase tracking-[0.3em] text-red-500 mb-2">Drill-Down Logic</h3>
+<h4 class="text-2xl font-black tracking-tighter mb-4">Command Insight: Faculty Concentration</h4>
+<p class="text-sm text-stone-400 mb-6 leading-relaxed max-w-lg">Hovering over any institution reveals direct navigation to the <span class="text-white font-bold">Department Matrix</span> and <span class="text-white font-bold">Curriculum Audits</span>. These modules allow for granular adjustment of administrative quotas.</p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">visibility</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">View Map</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">hub</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Access Nodes</span>
+</div>
+</div>
+</div>
+<img class="absolute -right-20 -bottom-20 w-80 h-80 object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" data-alt="Abstract architectural shot of a modern university building with sharp geometric lines and high contrast lighting, editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATgsMCTKAoinRnTld6KHxkS3UfncXLeR8KeUY2gLViCWiNJJkXlaVvY5PiLoFVOEqzQBaDHmhkGsZQhyu1W6LnneHsDaZ-zWUGOotbu2NxRmOzGizT1Wj2QSNutK6CiE_M6ELMS4D5-IPrxvU5Vi_E3SZk3JuyBgvb6DyuvlwO0gSX_TDh-La1JZE2EjUVuIDWIoRkR01wEBuVjLXvspH0zW1GXWoWMINKYmnsDKnSGyMMQn_7Szllugr20hR2sUwQcu6CU4_CK8w"/>
+</div>
+<div class="bg-surface-container-low p-8 rounded-sm border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl">emergency</span>
+<h4 class="text-lg font-black tracking-tight mb-2">System Alert</h4>
+<p class="text-xs text-on-surface-variant font-medium leading-relaxed mb-6">3 institutions in the Asian region have exceeded their student growth threshold by 12%. System stabilization required.</p>
+<button class="w-full bg-on-surface text-surface py-3 text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-colors">
+                    Initialize Audit
+                </button>
+</div>
+</div>
+</main>
+</body></html>

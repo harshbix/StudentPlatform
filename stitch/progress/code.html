@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Progress - Academic Concierge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#004ac6",
+              "on-secondary-container": "#fffbff",
+              "on-primary-fixed": "#00174b",
+              "secondary-fixed": "#eaddff",
+              "inverse-surface": "#2d3133",
+              "on-surface-variant": "#434655",
+              "on-tertiary-fixed-variant": "#3a485b",
+              "secondary-container": "#8a4cfc",
+              "inverse-primary": "#b4c5ff",
+              "surface-container": "#eceef0",
+              "surface-container-low": "#f2f4f6",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e6e8ea",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-container": "#606e83",
+              "on-primary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "primary-fixed-dim": "#b4c5ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e0e3e5",
+              "outline": "#737686",
+              "on-background": "#191c1e",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#48566a",
+              "surface-bright": "#f7f9fb",
+              "inverse-on-surface": "#eff1f3",
+              "surface": "#f7f9fb",
+              "outline-variant": "#c3c6d7",
+              "on-error-container": "#93000a",
+              "tertiary-fixed": "#d5e3fc",
+              "tertiary-fixed-dim": "#b9c7df",
+              "on-error": "#ffffff",
+              "on-primary-container": "#eeefff",
+              "primary-container": "#2563eb",
+              "secondary": "#712ae2",
+              "background": "#f7f9fb",
+              "surface-tint": "#0053db",
+              "on-tertiary-fixed": "#0d1c2e",
+              "on-surface": "#191c1e",
+              "on-tertiary-container": "#e9f0ff",
+              "secondary-fixed-dim": "#d2bbff",
+              "on-secondary-fixed-variant": "#5a00c6",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-secondary-fixed": "#25005a",
+              "surface-dim": "#d8dadc"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a young professional student with a friendly expression in a brightly lit academic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3i-btu1_cAc6v3u8H4H0Yn4rdaTGnZ9oXnmwlGKCAcdNqCzic8SNRx_C9aCEEUsDhoR1cig-0C6FUE-UxCpW2IZPVcsZdFhNYkQ8ajbh3Kj9K0hCugAzEmq0OO5AKJkIJ0ewRk_jFtX7EFK75PGwbgwIK8AATbNMW7SyXOtuVTlfHmKPfE3-EScFh_aDI3cCt77K9kkzjaUYs8Of2gasqbhLZf1j9mtpPgNu4GYDjD6OLIZqIpBJOU8_XmNDyFAeuk2snO0PBUWc"/>
+</div>
+<h1 class="text-blue-700 dark:text-blue-400 font-extrabold tracking-tighter font-headline text-lg">Academic Concierge</h1>
+</div>
+<button class="text-blue-600 dark:text-blue-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-32 px-6 max-w-md mx-auto space-y-8">
+<!-- Hero Section: Streak & Level (Bento Style) -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Streak Tracker -->
+<div class="col-span-1 bg-surface-container-lowest p-5 rounded-xl flex flex-col justify-between aspect-square relative overflow-hidden">
+<div class="z-10">
+<span class="text-xs font-bold font-headline uppercase tracking-widest text-primary mb-1 block">Activity</span>
+<h3 class="text-2xl font-extrabold font-headline tracking-tight text-on-surface">12 Day Streak</h3>
+</div>
+<div class="flex items-end justify-between z-10">
+<div class="flex gap-0.5">
+<div class="w-1.5 h-4 bg-primary rounded-full"></div>
+<div class="w-1.5 h-6 bg-primary rounded-full"></div>
+<div class="w-1.5 h-3 bg-primary rounded-full opacity-50"></div>
+<div class="w-1.5 h-8 bg-primary rounded-full"></div>
+<div class="w-1.5 h-5 bg-primary rounded-full"></div>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<!-- Subtle Gradient Background -->
+<div class="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+</div>
+<!-- Level & XP -->
+<div class="col-span-1 bg-surface-container-lowest p-5 rounded-xl flex flex-col items-center justify-center aspect-square text-center">
+<div class="relative w-20 h-20 flex items-center justify-center mb-2">
+<!-- Simple SVG Circular Progress -->
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-high" cx="40" cy="40" fill="transparent" r="36" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-secondary" cx="40" cy="40" fill="transparent" r="36" stroke="currentColor" stroke-dasharray="226" stroke-dashoffset="124" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-xl font-extrabold font-headline text-on-surface leading-none">5</span>
+<span class="text-[8px] font-bold text-outline uppercase tracking-tighter">Level</span>
+</div>
+</div>
+<p class="text-[10px] font-medium text-outline uppercase tracking-wider mb-1">XP Progress</p>
+<p class="text-sm font-bold font-headline text-secondary">450 / 1000</p>
+</div>
+</section>
+<!-- Habit Tracking Summary (Checkmark Grid) -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-extrabold font-headline tracking-tight">Daily Habits</h2>
+<span class="text-xs font-bold text-primary font-headline tracking-wider uppercase">Current Week</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+<div class="grid grid-cols-7 gap-3 mb-6">
+<div class="text-center space-y-2">
+<span class="text-[10px] font-bold text-outline uppercase">M</span>
+<div class="aspect-square rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="text-center space-y-2">
+<span class="text-[10px] font-bold text-outline uppercase">T</span>
+<div class="aspect-square rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="text-center space-y-2">
+<span class="text-[10px] font-bold text-outline uppercase">W</span>
+<div class="aspect-square rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="text-center space-y-2">
+<span class="text-[10px] font-bold text-outline uppercase">T</span>
+<div class="aspect-square rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="text-center space-y-2">
+<span class="text-[10px] font-bold text-outline uppercase">F</span>
+<div class="aspect-square rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-lg" data-icon="circle">circle</span>
+</div>
+</div>
+<div class="text-center space-y-2">
+<span class="text-[10px] font-bold text-outline uppercase">S</span>
+<div class="aspect-square rounded-lg bg-surface-container flex items-center justify-center"></div>
+</div>
+<div class="text-center space-y-2">
+<span class="text-[10px] font-bold text-outline uppercase">S</span>
+<div class="aspect-square rounded-lg bg-surface-container flex items-center justify-center"></div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="menu_book">menu_book</span>
+<span class="text-sm font-semibold">Deep Study Session</span>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="fitness_center">fitness_center</span>
+<span class="text-sm font-semibold">Active Rest</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Weekly Leaderboard -->
+<section class="space-y-4">
+<h2 class="text-xl font-extrabold font-headline tracking-tight">Top Students</h2>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<div class="divide-y divide-outline-variant/10">
+<!-- Rank 1 -->
+<div class="flex items-center justify-between px-5 py-4 bg-primary/5">
+<div class="flex items-center gap-4">
+<span class="text-sm font-extrabold text-primary w-4">1</span>
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
+<img alt="Top Student" class="w-full h-full object-cover" data-alt="Portrait of a female graduate student smiling with natural lighting and a warm outdoor background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX3hWUYCZekbtyyoEOJeRkhMFsOgdG4inpjlv9GEGIzwjXRaCB7SrCru5m4Rxaf7txzCgERaB3jz4DxKp7lki9OIl0QUwPVRjpobSk-z12X7rWdaZ4h1MGP8uLwK3ZYJQIIsPUPmbaTvFz7u0_gc93wvIb9TiT8FdYxsPR-0g4o_0vqoYGBHWY8rIUqRhgTsljkmB4qrLRsv1lUisc8o7cU53_je1vJMFaP9afDbIitDUJ29w9bdO1MMP2ROTgDi-7e6CSFdiq2bU"/>
+</div>
+<div>
+<p class="text-sm font-bold font-headline">Elena Vance</p>
+<p class="text-[10px] font-medium text-outline uppercase">Neuroscience</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-black text-primary">2,840</p>
+<p class="text-[9px] font-bold text-outline uppercase">PTS</p>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="flex items-center justify-between px-5 py-4">
+<div class="flex items-center gap-4">
+<span class="text-sm font-bold text-outline w-4">2</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Student" class="w-full h-full object-cover" data-alt="Modern headshot of a student in a minimalist gray sweatshirt with soft interior lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9-_yzxhrCaqs55mxkn8anzQec3zK7-HKu26eUzqhNbQmz-IdR1B1ep7BoPy_AFKubQpr0MRbPE_Z-UESdjddWaDZiLwdqDz-Trx1FhK9NF_q1HMcN5h7VDcQMmXdk2fq6QroeZ4yjnRIqcWLPusr0QuBG-vJr-Xp1pFRrwP6hqiy5c-Bv23RUOwvdIMRZQ9K-wABeM_lUkOF0FUZZU5oPvS4zhE7FElHXVSSTUWifedeSIU6wMBecw6VUEPHB8InZlrBhMUCID6Q"/>
+</div>
+<div>
+<p class="text-sm font-bold font-headline">Marcus Chen</p>
+<p class="text-[10px] font-medium text-outline uppercase">Applied Physics</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">2,615</p>
+<p class="text-[9px] font-bold text-outline uppercase">PTS</p>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="flex items-center justify-between px-5 py-4">
+<div class="flex items-center gap-4">
+<span class="text-sm font-bold text-outline w-4">3</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Student" class="w-full h-full object-cover" data-alt="Clean minimalist portrait of a young woman with short dark hair in high key lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcw3-XicJ3juwTq_xIV93azg0AyvHknw82sIeaC0tUx4GfT7atwDR-Zzg7_fY-9Wb66lnjfDgNW47Lzj33EnNAkV45y_JE9U6JWl4veZUSR4aFByaHUNEQD0WJ_dgPvNnOyTtlNbsy3r6oS2Dkz1xlI4YpY7s6NICNRyyEEz0tOsVwQ8oTSyymBCo9g6-mEJC0JU2cyb99BePvTyzmUn4imz482JldHSjS8xP17vxcxdQHRguWPdBTPuQz7SeW6YN90sGtCgR5USU"/>
+</div>
+<div>
+<p class="text-sm font-bold font-headline">Sarah Jenkins</p>
+<p class="text-[10px] font-medium text-outline uppercase">Literature</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">2,490</p>
+<p class="text-[9px] font-bold text-outline uppercase">PTS</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 text-center text-xs font-bold text-primary hover:bg-surface-container-low transition-colors uppercase tracking-widest font-headline">
+                    View Global Ranking
+                </button>
+</div>
+</section>
+<!-- Achievements Grid -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-extrabold font-headline tracking-tight">Academic Badges</h2>
+<span class="text-xs font-bold text-outline font-headline uppercase">14 / 28</span>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<!-- Unlocked -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col items-center gap-2 text-center group active:scale-95 transition-transform">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-1 text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="history_edu" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+</div>
+<p class="text-[10px] font-bold font-headline leading-tight">History Maker</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col items-center gap-2 text-center group active:scale-95 transition-transform">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-1 text-secondary">
+<span class="material-symbols-outlined text-3xl" data-icon="science" style="font-variation-settings: 'FILL' 1;">science</span>
+</div>
+<p class="text-[10px] font-bold font-headline leading-tight">Lab Assistant</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col items-center gap-2 text-center group active:scale-95 transition-transform">
+<div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-1 text-amber-600">
+<span class="material-symbols-outlined text-3xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-[10px] font-bold font-headline leading-tight">Scholar Star</p>
+</div>
+<!-- Locked -->
+<div class="bg-surface-container-lowest/50 p-4 rounded-xl flex flex-col items-center gap-2 text-center opacity-40">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-1 text-outline">
+<span class="material-symbols-outlined text-3xl" data-icon="psychology">psychology</span>
+</div>
+<p class="text-[10px] font-bold font-headline leading-tight">Master Mind</p>
+</div>
+<div class="bg-surface-container-lowest/50 p-4 rounded-xl flex flex-col items-center gap-2 text-center opacity-40">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-1 text-outline">
+<span class="material-symbols-outlined text-3xl" data-icon="diversity_3">diversity_3</span>
+</div>
+<p class="text-[10px] font-bold font-headline leading-tight">Group Leader</p>
+</div>
+<div class="bg-surface-container-lowest/50 p-4 rounded-xl flex flex-col items-center gap-2 text-center opacity-40">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-1 text-outline">
+<span class="material-symbols-outlined text-3xl" data-icon="language">language</span>
+</div>
+<p class="text-[10px] font-bold font-headline leading-tight">Polyglot</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-slate-950 shadow-[0px_-4px_20px_rgba(0,0,0,0.05)] rounded-t-2xl border-t border-slate-200/15 dark:border-slate-800/15">
+<div class="w-full flex justify-around items-center px-4 pb-6 pt-3">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-blue-500 dark:hover:text-blue-300 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-blue-500 dark:hover:text-blue-300 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-blue-500 dark:hover:text-blue-300 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-xl px-3 py-1 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-blue-500 dark:hover:text-blue-300 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider mt-1">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

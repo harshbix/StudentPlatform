@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#400100",
+              "tertiary-fixed-dim": "#9ecaff",
+              "on-primary": "#ffffff",
+              "surface-tint": "#be0f02",
+              "primary-fixed-dim": "#ffb4a7",
+              "secondary": "#a63a2a",
+              "on-tertiary-fixed": "#001d36",
+              "surface": "#fcf9f8",
+              "secondary-container": "#ff7c67",
+              "on-surface-variant": "#5c403b",
+              "primary-fixed": "#ffdad4",
+              "surface-dim": "#dcd9d9",
+              "outline-variant": "#e6bdb6",
+              "on-tertiary-container": "#fffeff",
+              "inverse-primary": "#ffb4a7",
+              "error-container": "#ffdad6",
+              "outline": "#916f69",
+              "on-secondary-container": "#721409",
+              "tertiary-container": "#0079ca",
+              "surface-bright": "#fcf9f8",
+              "surface-container-high": "#ebe7e7",
+              "on-secondary-fixed": "#400100",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#862215",
+              "on-tertiary-fixed-variant": "#00497d",
+              "secondary-fixed-dim": "#ffb4a7",
+              "on-background": "#1c1b1b",
+              "inverse-on-surface": "#f3f0ef",
+              "tertiary-fixed": "#d1e4ff",
+              "surface-container": "#f0edec",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed": "#ffdad4",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#920600",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-container": "#fffdff",
+              "primary": "#bb0c01",
+              "primary-container": "#e02e1b",
+              "surface-container-low": "#f6f3f2",
+              "surface-variant": "#e5e2e1",
+              "on-surface": "#1c1b1b",
+              "surface-container-highest": "#e5e2e1",
+              "on-error-container": "#93000a",
+              "inverse-surface": "#313030",
+              "background": "#fcf9f8",
+              "tertiary": "#0060a1",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-stone-100 dark:bg-stone-900 flex flex-col h-full py-6 px-4 z-50">
+<div class="mb-10 px-2">
+<h1 class="text-xl font-black tracking-tighter text-red-700 dark:text-red-600">Command Console</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold opacity-70">Precision Authority</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">school</span>
+<span>Universities</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-red-700 dark:text-red-500 font-bold border-r-2 border-red-700 dark:border-red-600 bg-stone-200/50 dark:bg-stone-800/50 font-sans text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">shield_person</span>
+<span>Roles &amp; Permissions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span>Announcements</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">health_and_safety</span>
+<span>System Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span>Logs &amp; Audit</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1 border-t border-stone-200 dark:border-stone-800 pt-6">
+<a class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors font-sans text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar Component -->
+<header class="fixed top-0 right-0 left-64 h-16 z-40 bg-white/85 dark:bg-stone-950/85 backdrop-blur-md border-b border-stone-200/20 dark:border-stone-800/20 shadow-sm dark:shadow-none flex items-center justify-between px-8 w-full">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-[10px] uppercase tracking-widest pl-10 placeholder:text-stone-400" placeholder="SEARCH USERS, ROLES, OR ENTITIES..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-stone-500 dark:text-stone-400 hover:text-red-600 dark:hover:text-red-400 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-stone-500 dark:text-stone-400 hover:text-red-600 dark:hover:text-red-400 transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-sm overflow-hidden border border-outline-variant/20">
+<img alt="Admin Profile" class="h-full w-full object-cover" data-alt="professional portrait of a middle-aged male administrator in a suit, sharp lighting, editorial corporate style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmGorf4z2qcxk9_bzRE7tTYRO_a3d5lJC8Wb4MTh0c2pTkOWqsE1jKkMQJwrJrXFMjxOhJytw4E16LuYKY6tUHXrlHX5VbCMylZWgPRCIEkoB2zXyVTGIEmcwDYK3wzygVrLPfbEwUQjgyIHeiNJX8Qth03fec34HZpyOvtmSQbfI2xRxVhYt1RTqTp8-mMOJDlchHX_PqSyeqlln3wpRJh04oFMulXg17hqWt1_2JYS9VjJ_4M4Y8jsMWb_Lt6iJXcFn5sW65Yng"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen bg-surface">
+<div class="p-8 space-y-8">
+<!-- Page Header & Action Bar -->
+<div class="flex flex-col gap-6">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-2xl font-black tracking-tight uppercase">User Management</h2>
+<p class="text-sm text-on-surface-variant">Global directory of active tenants and administrative hierarchies.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container-highest text-on-surface text-[11px] font-bold uppercase tracking-wider rounded-sm hover:bg-surface-container-high transition-colors">
+                            Export CSV
+                        </button>
+<button class="px-4 py-2 bg-gradient-to-b from-primary to-primary-container text-on-primary text-[11px] font-bold uppercase tracking-wider rounded-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                            Provision User
+                        </button>
+</div>
+</div>
+<!-- Advanced Action Bar -->
+<div class="bg-surface-container-low p-4 rounded-sm flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-lowest border-b border-outline-variant/40">
+<span class="material-symbols-outlined text-lg text-on-surface-variant">filter_list</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Filter By: All Roles</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-lowest border-b border-outline-variant/40">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Status: Active</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mr-2">Bulk Actions:</span>
+<button class="p-1.5 hover:bg-surface-container-high rounded-sm text-on-surface-variant" title="Bulk Assign Role">
+<span class="material-symbols-outlined">assignment_ind</span>
+</button>
+<button class="p-1.5 hover:bg-surface-container-high rounded-sm text-on-surface-variant" title="Bulk Disable">
+<span class="material-symbols-outlined">person_off</span>
+</button>
+<button class="p-1.5 hover:bg-red-50 text-error rounded-sm" title="Bulk Delete">
+<span class="material-symbols-outlined">delete_sweep</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Role Hierarchy Panel -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<section class="bg-surface-container-lowest p-6 rounded-sm border border-outline-variant/10 shadow-sm">
+<h3 class="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant mb-6 border-l-2 border-primary pl-3">Role Hierarchy</h3>
+<div class="space-y-4">
+<!-- Hierarchy Item -->
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-sm bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-lg">shield</span>
+</div>
+<div class="w-0.5 h-8 bg-outline-variant/30 my-1"></div>
+</div>
+<div class="pt-1">
+<p class="text-[11px] font-black uppercase tracking-widest">System Admin</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Full global authority across all tenants.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-sm bg-surface-container-highest flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-lg">account_balance</span>
+</div>
+<div class="w-0.5 h-8 bg-outline-variant/30 my-1"></div>
+</div>
+<div class="pt-1">
+<p class="text-[11px] font-black uppercase tracking-widest">University Admin</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Full control over single university entity.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-sm bg-surface-container-highest flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-lg">hub</span>
+</div>
+<div class="w-0.5 h-8 bg-outline-variant/30 my-1"></div>
+</div>
+<div class="pt-1">
+<p class="text-[11px] font-black uppercase tracking-widest">Org Manager</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Manage departments and subgroups.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-sm bg-surface-container-highest flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-lg">badge</span>
+</div>
+<div class="w-0.5 h-8 bg-outline-variant/30 my-1"></div>
+</div>
+<div class="pt-1">
+<p class="text-[11px] font-black uppercase tracking-widest">Class Rep</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Student advocate and moderator.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-sm bg-surface-container-highest flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-lg">person</span>
+</div>
+</div>
+<div class="pt-1">
+<p class="text-[11px] font-black uppercase tracking-widest">Student</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Standard member access.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-low p-6 rounded-sm border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Quick Insights</h3>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">monitoring</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 bg-surface-container-lowest rounded-sm">
+<p class="text-[9px] font-bold text-on-surface-variant uppercase tracking-widest">Active Admins</p>
+<p class="text-xl font-black mt-1">42</p>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded-sm">
+<p class="text-[9px] font-bold text-on-surface-variant uppercase tracking-widest">New Requests</p>
+<p class="text-xl font-black mt-1 text-primary">12</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Users Table Content -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-surface-container-lowest border border-outline-variant/10 shadow-sm rounded-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/20">
+<th class="p-4 w-10">
+<input class="rounded-none border-outline-variant/40 focus:ring-primary text-primary h-3 w-3" type="checkbox"/>
+</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">User Name</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">University</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Primary Role</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Last Activity</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-4">
+<input class="rounded-none border-outline-variant/40 focus:ring-primary text-primary h-3 w-3" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-high">
+<img class="h-full w-full object-cover" data-alt="headshot of a young professional man, bright natural lighting, minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmirI7yrhTOtxPEHZpxuCFdTRHwiLt5_iP_MiKHErKUdo2oye0HKUqYt4ittZLTP9jGt6kNDgVL4E0h5yagbBwVcBHPXut7UTR9CRiihWi79ueprX4T-nj8bVC5CMxTYuNM-XDfIxr8703MUqvmX2r_DCzUvIdny9ibrOZlDwqfA-GHnASPRa5p_CvkKNtClCZ_D6-575PqdFVHpFFgfMpRtv7lqwj4oFM8sj2aPW8aA2CQ6i_4cSnbiVanTe-tC_Qpkn1sQ-lveQ"/>
+</div>
+<div>
+<p class="text-[11px] font-bold">Arthur Morgan</p>
+<p class="text-[10px] text-on-surface-variant font-mono">amorgan@stanley.edu</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<p class="text-[11px] uppercase tracking-tight font-medium">Stanford University</p>
+</td>
+<td class="p-4">
+<span class="px-2 py-0.5 bg-red-50 text-red-700 text-[9px] font-black uppercase tracking-widest rounded-sm border border-red-100">Uni Admin</span>
+</td>
+<td class="p-4">
+<p class="text-[10px] font-medium">2 mins ago</p>
+</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-green-700">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                                            Active
+                                        </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-4">
+<input class="rounded-none border-outline-variant/40 focus:ring-primary text-primary h-3 w-3" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-high">
+<img class="h-full w-full object-cover" data-alt="professional headshot of a woman with a confident smile, neutral business background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbfXHtS0kEp8yI1cvo5ft8L7hoVvKzXb9RB8iItiv-OD49EfZsx4X7zp94NTCNoEVU_fEogSQ2DSyKT8yuULhtZHcu8XskTSkPoWPHDTJtFV0Ej8HHuL9qVw5fxWFh5IKuEta_tiGNiQkfIMdnR7GRDM_yilhb4soqF6BouImkxAr10vN2AsMe2nNYZgR4Kq_oi2_-pFPLGUkxag2bYBKzs9YIhqXt-UFdSYCbIWyhBTJx3A16Z529veBn76nwL1Z3VdQfHMLHAMk"/>
+</div>
+<div>
+<p class="text-[11px] font-bold">Elena Rodriguez</p>
+<p class="text-[10px] text-on-surface-variant font-mono">e.rodriguez@mit.edu</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<p class="text-[11px] uppercase tracking-tight font-medium">MIT</p>
+</td>
+<td class="p-4">
+<span class="px-2 py-0.5 bg-stone-100 text-stone-600 text-[9px] font-black uppercase tracking-widest rounded-sm">Org Manager</span>
+</td>
+<td class="p-4">
+<p class="text-[10px] font-medium">1 hour ago</p>
+</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-green-700">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                                            Active
+                                        </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-4">
+<input class="rounded-none border-outline-variant/40 focus:ring-primary text-primary h-3 w-3" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-high">
+<img class="h-full w-full object-cover" data-alt="close-up portrait of a man in professional attire, cinematic studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDygRuQ9JEIpW45BcU0g080P8nYKPBk8bEYmkk9Wfgn0hroTS8v7P_iXUNiUJh4RJ6dfT-zCDUxC_n9o5nqg7y--mbWOIT0nK2SdOifDtV_ZfH0AMwGnv58jVp-3HC5MjWgPOhLQ3yGjCZGCELd80msYAU1zIBImXplw7iGth7UzuiDwqxxYoPRBEiacDyv8zbQFZZ71BA87uuROtGODCj7w-u6Eg2evtDN08xArfPbwzeaDPAXc-bSiIEYP5vF9Hb3ZWz6Fjj6UiU"/>
+</div>
+<div>
+<p class="text-[11px] font-bold">Liam Chen</p>
+<p class="text-[10px] text-on-surface-variant font-mono">chen.l@harvard.edu</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<p class="text-[11px] uppercase tracking-tight font-medium">Harvard University</p>
+</td>
+<td class="p-4">
+<span class="px-2 py-0.5 bg-stone-100 text-stone-600 text-[9px] font-black uppercase tracking-widest rounded-sm">Class Rep</span>
+</td>
+<td class="p-4">
+<p class="text-[10px] font-medium">3 days ago</p>
+</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-stone-400">
+<span class="w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+                                            Inactive
+                                        </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-4">
+<input class="rounded-none border-outline-variant/40 focus:ring-primary text-primary h-3 w-3" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-high">
+<img class="h-full w-full object-cover" data-alt="editorial style portrait of a young woman, soft window light, professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARZASGfCC5MlDP62Y9P7nGOz0y7g4SHgkCxm_o2MRjcfCMhrPm5Sv5Vxz9piX45_QBz-ZVvHZXyx4oaPqa911g97lOSgrzWq8DkT_awxxik_S8cSDz37NYeBIFsiq0FZQTUwJRsOdTFi8TCoIaDrYa1U_ntSTc8OXP1Czzk2LbS7prVciFvDqERqFS9TvqEIUVxf02jWgvuEg60zQLzs_vDngJ_uEhQ2u_iwApdXciU0lU94qQn2QZPA49VXaCG6rPP9SES3jOrHk"/>
+</div>
+<div>
+<p class="text-[11px] font-bold">Sarah Jenkins</p>
+<p class="text-[10px] text-on-surface-variant font-mono">s.jenkins@oxford.ac.uk</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<p class="text-[11px] uppercase tracking-tight font-medium">Oxford University</p>
+</td>
+<td class="p-4">
+<span class="px-2 py-0.5 bg-stone-100 text-stone-600 text-[9px] font-black uppercase tracking-widest rounded-sm">Student</span>
+</td>
+<td class="p-4">
+<p class="text-[10px] font-medium">Just now</p>
+</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-green-700">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                                            Active
+                                        </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-4">
+<input class="rounded-none border-outline-variant/40 focus:ring-primary text-primary h-3 w-3" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-high">
+<img class="h-full w-full object-cover" data-alt="professional male portrait with confident expression, clean corporate aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_G8VVpSTw7XB3wXRYiXJ99lR-9B4WFZO8r_MH1vDX8223cAzCHjmejQeOSnBD_M0gCaQDRE2PApfY0d4UkVA-3iEYysFcHxLPz7-ZRIwANwow5Xu3ABLz2b_LB-VyDqFMOr_rAS_Pnne81X7Y5w5OVwLZf4MHG87lzlynviGBEv-fOvAJmDgQX0tGe62vD6srEAcqcmWeqResbk5gCdE6mPjymBXxUS_PTZNvbbzA93V4E1Bh2XXUyK9f9GbBcOB7Uh_T9A9YYgQ"/>
+</div>
+<div>
+<p class="text-[11px] font-bold">Marcus Thorne</p>
+<p class="text-[10px] text-on-surface-variant font-mono">mthorne@yale.edu</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<p class="text-[11px] uppercase tracking-tight font-medium">Yale University</p>
+</td>
+<td class="p-4">
+<span class="px-2 py-0.5 bg-red-50 text-red-700 text-[9px] font-black uppercase tracking-widest rounded-sm border border-red-100">System Admin</span>
+</td>
+<td class="p-4">
+<p class="text-[10px] font-medium">12 mins ago</p>
+</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-red-600">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                                            Locked
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Table Footer / Pagination -->
+<div class="p-4 bg-surface-container-low/50 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Showing 1-10 of 1,284 users</span>
+<div class="flex gap-2">
+<button class="p-1 border border-outline-variant/30 rounded-sm hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="p-1 border border-outline-variant/30 rounded-sm hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Information / Activity Stream -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-sm border border-outline-variant/10 shadow-sm flex flex-col gap-4">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+<h4 class="text-[11px] font-black uppercase tracking-widest">Security Audit</h4>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-relaxed">System-wide role validation is scheduled for 24:00 UTC. Ensure all temporary administrative privileges have been reviewed.</p>
+<button class="text-primary text-[10px] font-bold uppercase tracking-widest text-left hover:underline">View Policy →</button>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-sm border border-outline-variant/10 shadow-sm flex flex-col gap-4">
+<div class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined">sync</span>
+<h4 class="text-[11px] font-black uppercase tracking-widest">Active Syncs</h4>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<p class="text-[10px] font-medium uppercase">LDAP Directory</p>
+<span class="text-[9px] font-bold text-green-700">STABLE</span>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full">
+<div class="bg-green-600 h-1 w-[92%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-sm border border-outline-variant/10 shadow-sm flex flex-col gap-4">
+<div class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined">lock_clock</span>
+<h4 class="text-[11px] font-black uppercase tracking-widest">Access Logs</h4>
+</div>
+<ul class="space-y-3">
+<li class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-1"></span>
+<div>
+<p class="text-[10px] font-bold">Admin Privileges Escalated</p>
+<p class="text-[9px] text-on-surface-variant">User: ID_9281 • 14:20</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+</body></html>

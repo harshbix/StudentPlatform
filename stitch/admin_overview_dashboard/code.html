@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Command Console | God-View Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+        }
+        /* Custom Scrollbar for high-density feel */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e5e2e1; border-radius: 10px; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#400100",
+              "tertiary-fixed-dim": "#9ecaff",
+              "on-primary": "#ffffff",
+              "surface-tint": "#be0f02",
+              "primary-fixed-dim": "#ffb4a7",
+              "secondary": "#a63a2a",
+              "on-tertiary-fixed": "#001d36",
+              "surface": "#fcf9f8",
+              "secondary-container": "#ff7c67",
+              "on-surface-variant": "#5c403b",
+              "primary-fixed": "#ffdad4",
+              "surface-dim": "#dcd9d9",
+              "outline-variant": "#e6bdb6",
+              "on-tertiary-container": "#fffeff",
+              "inverse-primary": "#ffb4a7",
+              "error-container": "#ffdad6",
+              "outline": "#916f69",
+              "on-secondary-container": "#721409",
+              "tertiary-container": "#0079ca",
+              "surface-bright": "#fcf9f8",
+              "surface-container-high": "#ebe7e7",
+              "on-secondary-fixed": "#400100",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#862215",
+              "on-tertiary-fixed-variant": "#00497d",
+              "secondary-fixed-dim": "#ffb4a7",
+              "on-background": "#1c1b1b",
+              "inverse-on-surface": "#f3f0ef",
+              "tertiary-fixed": "#d1e4ff",
+              "surface-container": "#f0edec",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed": "#ffdad4",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#920600",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-container": "#fffdff",
+              "primary": "#bb0c01",
+              "primary-container": "#e02e1b",
+              "surface-container-low": "#f6f3f2",
+              "surface-variant": "#e5e2e1",
+              "on-surface": "#1c1b1b",
+              "surface-container-highest": "#e5e2e1",
+              "on-error-container": "#93000a",
+              "inverse-surface": "#313030",
+              "background": "#fcf9f8",
+              "tertiary": "#0060a1",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-stone-100 dark:bg-stone-900 flex flex-col py-6 px-4 z-50">
+<div class="mb-10 px-2">
+<h1 class="text-xl font-black tracking-tighter text-red-700 dark:text-red-600">Command Console</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold mt-1">Precision Authority</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active Tab: Overview -->
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-bold text-red-700 dark:text-red-500 border-r-2 border-red-700 dark:border-red-600 bg-stone-200/50 dark:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="school">school</span>
+<span>Universities</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="group">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="shield_person">shield_person</span>
+<span>Roles &amp; Permissions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="campaign">campaign</span>
+<span>Announcements</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="health_and_safety">health_and_safety</span>
+<span>System Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="history_edu">history_edu</span>
+<span>Logs &amp; Audit</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 space-y-1 border-t border-stone-200/20">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<span>Support</span>
+</a>
+<div class="mt-4 flex items-center gap-3 px-3 py-4 bg-stone-200/30 dark:bg-stone-800/30 rounded-sm">
+<img alt="Admin User Avatar" class="w-8 h-8 rounded-full border border-stone-300 dark:border-stone-700" data-alt="professional portrait of a senior system administrator in a minimal studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC62LzbXfLveYPshHxbfXilg4isg5Uwro6GpJC1RVbzuaLrrqHfPLcQDnxXo96NGP0jAu05Te1wQXYgOI4p_Ph1SDHH9IJcT6WmkmZfq6XCnFkpMSR9DeXeOjcKFcETJXTCqYlvMhhZeqVybipf3XJ7uG_Yvpt8rP4T1rs-8EDREOnIlbcJwgVEEbHQhIi7PtB0iTByvtsg9asNHBRz1QWIfjrtnZdfvJMF-Diz6ycSvvEE1WwIUQYaFzPiPDLoGJnRnxba6OeWFk"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Admin Root</p>
+<p class="text-[10px] text-stone-500 uppercase">Superuser</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 h-16 z-40 bg-white/85 dark:bg-stone-950/85 backdrop-blur-md border-b border-stone-200/20 dark:border-stone-800/20 shadow-sm dark:shadow-none flex items-center justify-between px-8">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-[18px]" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-xs font-sans uppercase tracking-widest pl-10 text-on-surface" placeholder="COMMAND SEARCH (CTRL+K)" type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-stone-500 hover:text-red-700 transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-stone-500 hover:text-red-700 transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-stone-200 dark:bg-stone-800 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Admin Console</span>
+<img alt="Admin Profile" class="w-8 h-8 rounded-sm bg-stone-100 dark:bg-stone-800" data-alt="minimalist geometric logo for an administrative console with sharp lines and high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK4-2xNJYSELUBnFl33g9GSBwG89T_nBwvf0fcExcj_2PuPvMSjeWpJU5SIbcDYFMACByXSUqcVbv_nuqm3yaj8yp0SO7syAR-7VxoX2iQm61G7_UoxadnSA3I2dU8jwfiFd797kULpWmuZ85S7eOpVr_KPkuw6wPeIjDhpMqzJxowMyJyb4X_1Pefglg1FxMjgiWVOMq2uH9BxfgHkPv1fKYlxdrt8s7AYkpx58jydVDJb1tICLCkI243jmbJo2NlzB1IuwXrKvg"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-screen">
+<!-- Header Section -->
+<div class="mb-10 flex items-end justify-between">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-on-surface">System Overview</h2>
+<p class="text-on-surface-variant text-sm mt-1 uppercase tracking-widest font-medium">Global Network Status &amp; Node Authority</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-highest text-on-surface text-xs font-bold uppercase tracking-tighter rounded-sm hover:bg-surface-container-high transition-colors">
+                    Export Audit
+                </button>
+<button class="px-4 py-2 bg-gradient-to-b from-primary to-primary-container text-on-primary text-xs font-bold uppercase tracking-tighter rounded-sm shadow-lg shadow-primary/10 transition-all active:opacity-80">
+                    System Refresh
+                </button>
+</div>
+</div>
+<!-- Global KPIs Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-sm border-none transition-all">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Total Universities</span>
+<span class="text-primary material-symbols-outlined text-[20px]" data-icon="school">school</span>
+</div>
+<div class="flex items-end gap-3">
+<span class="text-4xl font-black tracking-tighter">142</span>
+<span class="text-xs font-bold text-green-600 mb-1 flex items-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                        +4%
+                    </span>
+</div>
+<div class="mt-4 h-8 flex items-end gap-1">
+<div class="flex-1 bg-stone-100 h-2"></div>
+<div class="flex-1 bg-stone-100 h-4"></div>
+<div class="flex-1 bg-stone-100 h-3"></div>
+<div class="flex-1 bg-stone-100 h-5"></div>
+<div class="flex-1 bg-primary h-6"></div>
+<div class="flex-1 bg-stone-100 h-4"></div>
+<div class="flex-1 bg-stone-100 h-5"></div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-sm border-none transition-all">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Active Users</span>
+<span class="text-primary material-symbols-outlined text-[20px]" data-icon="group">group</span>
+</div>
+<div class="flex items-end gap-3">
+<span class="text-4xl font-black tracking-tighter">84.2K</span>
+<span class="text-xs font-bold text-green-600 mb-1 flex items-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                        +12%
+                    </span>
+</div>
+<div class="mt-4 h-8 flex items-end gap-1">
+<div class="flex-1 bg-primary h-3"></div>
+<div class="flex-1 bg-primary h-5"></div>
+<div class="flex-1 bg-primary h-7"></div>
+<div class="flex-1 bg-primary h-8"></div>
+<div class="flex-1 bg-primary h-6"></div>
+<div class="flex-1 bg-primary h-4"></div>
+<div class="flex-1 bg-primary h-5"></div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-sm border-none transition-all">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Active Sessions</span>
+<span class="text-primary material-symbols-outlined text-[20px]" data-icon="bolt">bolt</span>
+</div>
+<div class="flex items-end gap-3">
+<span class="text-4xl font-black tracking-tighter">12,408</span>
+<span class="text-xs font-bold text-stone-500 mb-1 flex items-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="horizontal_rule">horizontal_rule</span>
+                        STABLE
+                    </span>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<div class="w-full bg-stone-100 h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%]"></div>
+</div>
+<span class="text-[10px] font-bold">65%</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-sm border-none transition-all">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">System Load</span>
+<span class="text-primary material-symbols-outlined text-[20px]" data-icon="memory">memory</span>
+</div>
+<div class="flex items-end gap-3">
+<span class="text-4xl font-black tracking-tighter">32.4%</span>
+<span class="text-xs font-bold text-red-600 mb-1 flex items-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                        +2%
+                    </span>
+</div>
+<div class="mt-4 flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">All Nodes Optimal</span>
+</div>
+</div>
+</div>
+<!-- Middle Section: Main Activity & Recent Alerts -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- System Activity Chart (Large Area) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-black tracking-tight">University Engagement Metrics</h3>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">Cross-Node Interaction — Last 30 Days</p>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low p-1 rounded-sm">
+<button class="px-3 py-1 text-[10px] font-bold bg-white shadow-sm rounded-sm">30D</button>
+<button class="px-3 py-1 text-[10px] font-bold text-stone-500">90D</button>
+<button class="px-3 py-1 text-[10px] font-bold text-stone-500">1Y</button>
+</div>
+</div>
+<!-- Mock Chart Canvas -->
+<div class="relative h-[300px] w-full flex items-end justify-between px-2 overflow-hidden">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between">
+<div class="border-b border-stone-100 w-full h-0"></div>
+<div class="border-b border-stone-100 w-full h-0"></div>
+<div class="border-b border-stone-100 w-full h-0"></div>
+<div class="border-b border-stone-100 w-full h-0"></div>
+</div>
+<!-- Area Shape (Simulated) -->
+<svg class="absolute bottom-0 left-0 w-full h-full preserve-3d" preserveaspectratio="none" viewbox="0 0 100 40">
+<defs>
+<lineargradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#bb0c01" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#bb0c01" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 40 Q 10 30, 20 35 T 40 10 T 60 25 T 80 5 T 100 20 V 40 H 0 Z" fill="url(#areaGradient)"></path>
+<path d="M0 40 Q 10 30, 20 35 T 40 10 T 60 25 T 80 5 T 100 20" fill="none" stroke="#bb0c01" stroke-width="0.5"></path>
+</svg>
+<!-- Data Labels -->
+<div class="absolute bottom-0 left-0 w-full flex justify-between px-2 pt-2 text-[10px] font-bold text-stone-400 uppercase">
+<span>May 01</span>
+<span>May 10</span>
+<span>May 20</span>
+<span>May 30</span>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-3 gap-4 pt-8 border-t border-stone-100">
+<div>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Peak Traffic</p>
+<p class="text-xl font-black">18.4K/min</p>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Avg Session</p>
+<p class="text-xl font-black">12:42m</p>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Bounce Rate</p>
+<p class="text-xl font-black">4.21%</p>
+</div>
+</div>
+</div>
+<!-- Recent Alerts Sidebar -->
+<div class="bg-surface-container-low p-8 rounded-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-black tracking-tight">Anomalies</h3>
+<span class="text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded-full">4 CRITICAL</span>
+</div>
+<div class="space-y-4">
+<!-- Alert 1 -->
+<div class="p-4 bg-white rounded-sm border-l-4 border-red-700 shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-black text-red-700 uppercase tracking-tighter">System Error Spike</span>
+<span class="text-[9px] text-stone-400 font-bold">2M AGO</span>
+</div>
+<p class="text-xs font-bold text-on-surface leading-tight">Elevated 404 error rate detected on API-Node-04.</p>
+<button class="mt-2 text-[10px] font-bold text-red-700 uppercase tracking-widest hover:underline">Investigate</button>
+</div>
+<!-- Alert 2 -->
+<div class="p-4 bg-white rounded-sm border-l-4 border-orange-500 shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-black text-orange-600 uppercase tracking-tighter">Inactive university</span>
+<span class="text-[9px] text-stone-400 font-bold">14M AGO</span>
+</div>
+<p class="text-xs font-bold text-on-surface leading-tight">"Tech State University" has not synced in 24 hours.</p>
+<button class="mt-2 text-[10px] font-bold text-stone-600 uppercase tracking-widest hover:underline">Notify Admin</button>
+</div>
+<!-- Alert 3 -->
+<div class="p-4 bg-white rounded-sm border-l-4 border-red-700 shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-black text-red-700 uppercase tracking-tighter">Security Breach Attempt</span>
+<span class="text-[9px] text-stone-400 font-bold">1H AGO</span>
+</div>
+<p class="text-xs font-bold text-on-surface leading-tight">Brute force detected on Superuser Login from IP 192.x.x.x</p>
+<button class="mt-2 text-[10px] font-bold text-red-700 uppercase tracking-widest hover:underline">Lock Account</button>
+</div>
+<!-- Alert 4 -->
+<div class="p-4 bg-stone-50/50 rounded-sm border-l-4 border-stone-300">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-black text-stone-500 uppercase tracking-tighter">System update</span>
+<span class="text-[9px] text-stone-400 font-bold">4H AGO</span>
+</div>
+<p class="text-xs font-medium text-stone-500 leading-tight">Kernel patch 1.4.2 successfully deployed to 12 nodes.</p>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border border-stone-200 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 hover:bg-stone-200 transition-colors">
+                    View Alert History
+                </button>
+</div>
+</div>
+<!-- Infrastructure Status Heatmap Section -->
+<div class="bg-surface-container-lowest p-8 rounded-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-black tracking-tight">Infrastructure Health Map</h3>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">Real-time API Endpoint &amp; Node Latency</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-green-500 rounded-none"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-stone-500">Healthy</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-orange-400 rounded-none"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-stone-500">Degraded</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-red-600 rounded-none"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-stone-500">Outage</span>
+</div>
+</div>
+</div>
+<!-- Heatmap Grid -->
+<div class="grid grid-cols-6 md:grid-cols-12 gap-2">
+<!-- Row 1 -->
+<div class="aspect-square bg-green-500 rounded-none group relative">
+<div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[9px] font-bold px-2 py-1 rounded-sm hidden group-hover:block whitespace-nowrap z-10">AUTH-01: 12ms</div>
+</div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-orange-400 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<!-- Row 2 -->
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-red-600 rounded-none animate-pulse"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<!-- Row 3 -->
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-orange-400 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+<div class="aspect-square bg-green-500 rounded-none"></div>
+</div>
+<div class="mt-8 flex items-center justify-between border-t border-stone-100 pt-6">
+<div class="flex gap-8">
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Global Uptime</p>
+<p class="text-lg font-black text-green-600">99.998%</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Mean Latency</p>
+<p class="text-lg font-black text-on-surface">42ms</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Request Volume</p>
+<p class="text-lg font-black text-on-surface">1.2M/hr</p>
+</div>
+</div>
+<button class="text-xs font-bold text-primary uppercase tracking-widest flex items-center gap-2 hover:underline">
+                    Detailed Diagnostics <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Contextual Floating Indicator (Infrastructure Node Focus) -->
+<div class="fixed bottom-8 right-8 z-50 pointer-events-none">
+<div class="glass-panel p-4 rounded-sm border-none shadow-2xl flex items-center gap-4 border-l-4 border-primary pointer-events-auto">
+<div class="w-10 h-10 bg-red-50 flex items-center justify-center text-primary rounded-sm">
+<span class="material-symbols-outlined" data-icon="dns">dns</span>
+</div>
+<div>
+<p class="text-[10px] font-black uppercase tracking-tighter text-on-surface-variant">Primary Control Center</p>
+<p class="text-sm font-bold text-on-surface">Node-01 Active &amp; Secure</p>
+</div>
+</div>
+</div>
+</body></html>

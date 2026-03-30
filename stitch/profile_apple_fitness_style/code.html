@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#d8e2ff",
+              "inverse-primary": "#4b8eff",
+              "primary-fixed-dim": "#c2d4ff",
+              "on-tertiary-fixed": "#002939",
+              "primary-dim": "#004faa",
+              "inverse-surface": "#0c0e12",
+              "tertiary-dim": "#005a78",
+              "on-secondary-fixed": "#670093",
+              "tertiary-fixed": "#5ccafc",
+              "surface-dim": "#d3dae9",
+              "surface-container-low": "#f2f3fa",
+              "surface-tint": "#005bc1",
+              "on-tertiary-container": "#004056",
+              "on-secondary": "#fff7fc",
+              "on-error-container": "#752121",
+              "tertiary": "#006788",
+              "on-secondary-container": "#7f1bae",
+              "tertiary-fixed-dim": "#4bbcee",
+              "on-primary-fixed-variant": "#0058bb",
+              "on-tertiary": "#f4faff",
+              "on-primary-container": "#004ea8",
+              "error-dim": "#4e0309",
+              "primary": "#005bc1",
+              "error-container": "#fe8983",
+              "on-primary": "#f7f7ff",
+              "primary-fixed": "#d8e2ff",
+              "error": "#9f403d",
+              "surface-container": "#ebeef7",
+              "on-surface": "#2c333d",
+              "on-secondary-fixed-variant": "#8a2ab9",
+              "background": "#f9f9fe",
+              "outline": "#747b86",
+              "surface-container-highest": "#dce3f0",
+              "surface-bright": "#f9f9fe",
+              "surface-variant": "#dce3f0",
+              "on-surface-variant": "#595f6a",
+              "surface": "#f9f9fe",
+              "secondary-container": "#f6d9ff",
+              "tertiary-container": "#5ccafc",
+              "inverse-on-surface": "#9c9da1",
+              "on-background": "#2c333d",
+              "secondary-fixed-dim": "#f0c6ff",
+              "secondary-dim": "#801eb0",
+              "on-error": "#fff7f6",
+              "secondary-fixed": "#f6d9ff",
+              "secondary": "#8e2fbd",
+              "surface-container-high": "#e4e8f3",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#003d85",
+              "on-tertiary-fixed-variant": "#004962",
+              "outline-variant": "#acb2bf"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-[#f9f9fe]/80 dark:bg-slate-950/80 backdrop-blur-xl docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-lg mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#005bc1] dark:text-blue-400">bubble_chart</span>
+<h1 class="font-['Manrope'] font-bold text-xl tracking-tight text-[#005bc1] dark:text-blue-400">Concierge</h1>
+</div>
+<button class="hover:opacity-70 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#595f6a] dark:text-slate-400">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-lg mx-auto px-6 pt-8 pb-32">
+<!-- Hero Profile Section -->
+<section class="flex flex-col items-center mb-16">
+<div class="relative mb-6">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface-container-low ring-4 ring-primary-container/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a stylish young man with a friendly expression in a bright, modern architectural setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNCDYedgRGk0I0ctzQ_t0qPHroR9t8i0c4vi1esfHquLCcmk14q_Ls2lrz91NWIqOAUYN30PnDSSXlbEDLtcLfrksBpZf-tlMtFz6tc7NbzmkiFtQKl6ZYbaVW_6SOQQC9byYjOrSXDn6mLx1qn02K37mdWbu-sCfmR9G8reEsCgOcZdW5a9c11raRqhbjRr4KnhJ0AG_sZ1DjNrg16ppwuc0DRnpLkIK13E4XRtSECiJv2xneQdSCGTrgUjcTvDZ4mLv3HQ9vg-g"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary p-2 rounded-full text-on-primary shadow-lg ring-4 ring-background">
+<span class="material-symbols-outlined text-sm block">edit</span>
+</div>
+</div>
+<h2 class="text-2xl font-extrabold tracking-tight mb-1">Julian Sterling</h2>
+<p class="text-on-surface-variant font-medium text-sm">Sophomore • Computer Science</p>
+</section>
+<!-- Hero Metrics (Apple Fitness Style) -->
+<section class="grid grid-cols-1 gap-12 mb-20">
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-[0.75rem] font-bold uppercase tracking-[0.15em] mb-2 px-1">Assignments done</span>
+<div class="flex items-baseline gap-2">
+<span class="text-[4rem] leading-none font-extrabold text-primary tracking-tighter">42</span>
+<span class="text-lg font-bold text-primary/40">/ 50</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full mt-4 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-dim rounded-full" style="width: 84%"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-[0.7rem] font-bold uppercase tracking-[0.15em] mb-1">Class rank</span>
+<div class="flex items-baseline gap-1">
+<span class="text-[2.5rem] leading-none font-extrabold text-secondary tracking-tighter">04</span>
+<span class="text-sm font-bold text-secondary-dim">th</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-[0.7rem] font-bold uppercase tracking-[0.15em] mb-1">Attendance</span>
+<div class="flex items-baseline gap-1">
+<span class="text-[2.5rem] leading-none font-extrabold text-tertiary tracking-tighter">98</span>
+<span class="text-sm font-bold text-tertiary-dim">%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievements Bento/Grid -->
+<section class="mb-20">
+<div class="flex justify-between items-end mb-8">
+<h3 class="text-xl font-bold tracking-tight">Achievements</h3>
+<button class="text-primary text-sm font-bold">View All</button>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class="flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center text-primary-dim">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<span class="text-[10px] font-bold uppercase text-on-surface-variant text-center leading-tight">Elite Scholar</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="text-[10px] font-bold uppercase text-on-surface-variant text-center leading-tight">Fastest Learner</span>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-30 grayscale">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<span class="text-[10px] font-bold uppercase text-on-surface-variant text-center leading-tight">Researcher</span>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-30 grayscale">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">public</span>
+</div>
+<span class="text-[10px] font-bold uppercase text-on-surface-variant text-center leading-tight">Global Rep</span>
+</div>
+</div>
+</section>
+<!-- Settings List -->
+<section class="mb-12">
+<h3 class="text-xl font-bold tracking-tight mb-6">Settings</h3>
+<div class="flex flex-col space-y-2">
+<!-- Spaced list items using tonal layering instead of borders -->
+<div class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">person_outline</span>
+</div>
+<span class="font-semibold text-on-surface">Personal Information</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<div class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<span class="font-semibold text-on-surface">Notification Preferences</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<div class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<span class="font-semibold text-on-surface">Privacy &amp; Security</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<div class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-error">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<span class="font-semibold text-error">Sign Out</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl shadow-[0_-10px_40px_rgba(44,51,61,0.04)] rounded-t-[2.5rem]">
+<a class="flex flex-col items-center justify-center text-[#595f6a] dark:text-slate-500 opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-wider">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#595f6a] dark:text-slate-500 opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">assignment_turned_in</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-wider">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#595f6a] dark:text-slate-500 opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-wider">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#595f6a] dark:text-slate-500 opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">donut_large</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-wider">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#005bc1] dark:text-blue-300 bg-[#d8e2ff] dark:bg-blue-900/40 rounded-full px-5 py-2 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>

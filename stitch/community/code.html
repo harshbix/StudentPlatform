@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#004ac6",
+              "on-secondary-container": "#fffbff",
+              "on-primary-fixed": "#00174b",
+              "secondary-fixed": "#eaddff",
+              "inverse-surface": "#2d3133",
+              "on-surface-variant": "#434655",
+              "on-tertiary-fixed-variant": "#3a485b",
+              "secondary-container": "#8a4cfc",
+              "inverse-primary": "#b4c5ff",
+              "surface-container": "#eceef0",
+              "surface-container-low": "#f2f4f6",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e6e8ea",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-container": "#606e83",
+              "on-primary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "primary-fixed-dim": "#b4c5ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e0e3e5",
+              "outline": "#737686",
+              "on-background": "#191c1e",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#48566a",
+              "surface-bright": "#f7f9fb",
+              "inverse-on-surface": "#eff1f3",
+              "surface": "#f7f9fb",
+              "outline-variant": "#c3c6d7",
+              "on-error-container": "#93000a",
+              "tertiary-fixed": "#d5e3fc",
+              "tertiary-fixed-dim": "#b9c7df",
+              "on-error": "#ffffff",
+              "on-primary-container": "#eeefff",
+              "primary-container": "#2563eb",
+              "secondary": "#712ae2",
+              "background": "#f7f9fb",
+              "surface-tint": "#0053db",
+              "on-tertiary-fixed": "#0d1c2e",
+              "on-surface": "#191c1e",
+              "on-tertiary-container": "#e9f0ff",
+              "secondary-fixed-dim": "#d2bbff",
+              "on-secondary-fixed-variant": "#5a00c6",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-secondary-fixed": "#25005a",
+              "surface-dim": "#d8dadc"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-slate-50/80 backdrop-blur-md fixed top-0 w-full z-50 no-border bg-slate-100/50">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-fixed flex items-center justify-center">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="portrait of a confident young female student with glasses in a bright library setting, soft focus bookshelves background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrDglglhfqDgeHD9KP9LH0N8PheZJvs6xFF4ihcll1zquMFnbbG68SPhcn9M2gvGxBskjLdkLb4pBCkGu2Yml1yt_SMK1RiGHoT_hlV9J3LwVKiQCdmxDT4dWDNiK_rdAsfjl16XJqewcWVxZIJgTmZOg2ezqfKJjSUeI82l3Qdmlgl_qpqFp4Fm2vlp6AxgENrRY_TPuGua7fddnK7YT71ZkNCPqkdPiGdgy2BUcknC0icwM6AkRC95-LBx-Pr4JKq7qMa5gXwZc"/>
+</div>
+<h1 class="font-headline font-extrabold tracking-tighter text-blue-700">Academic Concierge</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-200/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-500">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-4 max-w-2xl mx-auto space-y-8">
+<!-- Section Header -->
+<header class="space-y-1">
+<p class="font-label text-[11px] font-bold uppercase tracking-[0.15em] text-primary">Nexus Hub</p>
+<h2 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface">Community</h2>
+</header>
+<!-- Priority Announcements: Bento Style -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-headline text-lg font-bold">Announcements</h3>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">3 New</span>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Highlighted Announcement Card -->
+<div class="relative overflow-hidden bg-primary-container p-6 rounded-xl text-on-primary-container group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-white/20 transition-all duration-500"></div>
+<div class="relative z-10 space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<span class="font-label text-xs font-semibold uppercase tracking-widest">Urgent Notice</span>
+</div>
+<h4 class="font-headline text-xl font-extrabold leading-tight">Spring Semester Registration Deadlines Revised</h4>
+<p class="text-sm text-on-primary-container/80 leading-relaxed font-medium">Please note that the final date for module selection has been moved forward to Friday, October 27th.</p>
+<button class="mt-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg text-xs font-bold hover:bg-white/30 transition-colors">
+                            Read Full Memo
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl space-y-2">
+<span class="text-secondary font-bold text-[10px] uppercase tracking-tighter">Campus Event</span>
+<h5 class="font-headline font-bold text-sm leading-snug">Tech Careers Mixer @ Great Hall</h5>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl space-y-2">
+<span class="text-tertiary font-bold text-[10px] uppercase tracking-tighter">Academic</span>
+<h5 class="font-headline font-bold text-sm leading-snug">Library 24/7 Access Resumes</h5>
+</div>
+</div>
+</div>
+</section>
+<!-- Discussion Threads: Editorial List -->
+<section class="space-y-6">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-headline text-lg font-bold">Recent Discussions</h3>
+<button class="text-primary font-bold text-sm hover:underline">Start Thread</button>
+</div>
+<div class="space-y-4">
+<!-- Thread 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl hover:bg-white transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="bg-blue-50 text-blue-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">CS101</span>
+<span class="text-slate-400 text-xs font-medium">2m ago</span>
+</div>
+<span class="material-symbols-outlined text-slate-300">more_horiz</span>
+</div>
+<h4 class="font-headline text-base font-bold text-on-surface mb-2">Thoughts on the mid-term algorithmic complexity question?</h4>
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2">
+<img alt="Participant" class="w-6 h-6 rounded-full ring-2 ring-white object-cover" data-alt="portrait of a young man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWxlCu8YmW1I2Ulg4ZBVwuIQOeUgDRYj7b3O7wKBuZeX_863DeEfUho_nt3fKKByAWKmg1d-VpumW-0XZgBXS2__caudpgu_E6hVQrvh6eIUCfoTUSvBU29k8GALrc4X7Hlh8iP8zEPVeiKUnrEHrdc3Y_R2T6LhxrdKpw0qz0Ovj4EUU6KWskzIoP42nSmSJ_y0eFjX8saax7ToAdh3z-cGCdM6BDj2vICtrf_vgdjCAlVhd2imbav_aOx1GnR9mUh2Qrgh_JKTQ"/>
+<img alt="Participant" class="w-6 h-6 rounded-full ring-2 ring-white object-cover" data-alt="young man with beard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqyNOdd17QF9HMXVND3Rx1oo902Ko0J25jxcIclgP-cCFTg4DV7PVTo6KkQ3XDnLwPsuTMHT-BzmdiZ0o7bmBCXZI-iyizwCWrTtrBJbifneYBckBNEKDMIfp8Qn_3PJseEX-KxcYI5bdinH-eWkG8u2e3cZdy57CQKT3w1XfDTMAzckTSxE_WcmCjBfof-1X3x3z2y-U4TK5UKZy3Qc_Eki2ij1Nfecaob2GLJ1zy4yIJvaDb0qS9HTWpD5jBAKGyFYb1aqvBZn0"/>
+<div class="w-6 h-6 rounded-full bg-surface-container-high ring-2 ring-white flex items-center justify-center text-[10px] font-bold text-slate-500">+12</div>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-1 italic">"I think we needed to use a hash map for O(1) time..."</p>
+</div>
+</div>
+<!-- Thread 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl hover:bg-white transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="bg-purple-50 text-purple-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">Ethics</span>
+<span class="text-slate-400 text-xs font-medium">1h ago</span>
+</div>
+<span class="material-symbols-outlined text-slate-300">more_horiz</span>
+</div>
+<h4 class="font-headline text-base font-bold text-on-surface mb-2">Debate: AI in Creative Writing Modules</h4>
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2">
+<img alt="Participant" class="w-6 h-6 rounded-full ring-2 ring-white object-cover" data-alt="close up woman portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAugf3RcnmvBxIvNpgBeGXD9kIDwWfD4pwur-lTt4ZSGXkL17MK8psmgM33J2AxiWf6mREuVJg653xwiXLa3Z2qs5cBX1rnXcanzRLxLPFMBOiXp54m79grIs4drT-97AcZiaaBrRAdsrjgkYLdR7i8qOc0UpA_ACGqd2NWBt459SCbF3wPqUrtY-saq3ki9NTHwM_US5ECmGuIXTxKijELnaSrrPz-D54XB9SkRjwp83FlfKCIiRS_fmGt4zmjL9AwL-Z-6ztZGGU"/>
+<img alt="Participant" class="w-6 h-6 rounded-full ring-2 ring-white object-cover" data-alt="smiling man in studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADeRAmVaFt6WO7T6w8Al-C72nhBJt_KCLajJ59TFxuKAp_am7O5dUm52W05KHaVNynQZ_ZZYkW-LVnGtcAHH3B5yx20eQ5yvAclqcrr9Zv2yRm_8Iw8eoHbWS6FyTIDj_c6arZcWyztM2w7BbAHKu9ns_kvJEDwc2ZoxCkqSO3g3RFk2ryhaJo_I5ILotn2-nb1neNm8I-SZcsAQ_UQyTyhmLveUGZ13wKmMY-jouNJAhme_Z2cOerIMPqlSk2_MOn2rmj8p9a58Q"/>
+<div class="w-6 h-6 rounded-full bg-surface-container-high ring-2 ring-white flex items-center justify-center text-[10px] font-bold text-slate-500">+4</div>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-1 italic">"It helps with brainstorming, but the core should be human..."</p>
+</div>
+</div>
+<!-- Thread 3 (Chat Style UI Snippet) -->
+<div class="bg-surface-container-low/50 border border-dashed border-outline-variant p-6 rounded-2xl space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">forum</span>
+<p class="font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Live Channel: Study Group B</p>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex gap-3 max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-slate-200 shrink-0">
+<img alt="User" class="w-full h-full rounded-full object-cover" data-alt="professional portrait of a man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA6UnPd1iqtFRJYnwau5xSik1C41616fkx1V57P0Mi55t6hxTueJQBHlP855o0Sv4x4zgwp-eBrO_tdSpxrRyWfeUa_1hGHAW9l0XVoDW9BskOiM-uNA6RadYdFWqB79qIyAqEj5REiC7O9-_ugkD-UiV2Vjio8ASBN_xW-OS0moqT-AYPM8gnwtdmkJAB8Kpy02kJnP7fowmwWSnJJ4e-mhUGkngdNOZJVhC_mVqwe9Zqvq6gG3KyI9lvTAz-tJ2FjP-2lJq_3-s"/>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-2xl rounded-tl-none shadow-sm">
+<p class="text-xs font-bold text-primary mb-1">Alex Rivet</p>
+<p class="text-sm text-on-surface leading-snug">Did anyone manage to find the PDF for chapter 4? The library link seems broken.</p>
+</div>
+</div>
+<div class="flex gap-3 self-end max-w-[85%]">
+<div class="bg-primary text-on-primary p-3 rounded-2xl rounded-tr-none shadow-sm">
+<p class="text-sm leading-snug">Check the shared drive under 'Resources'. I uploaded a mirror link there!</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-full py-3 pl-4 pr-12 text-sm focus:ring-2 focus:ring-primary/20" placeholder="Type a message..." type="text"/>
+<button class="absolute right-2 top-1.5 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white shadow-[0px_-4px_20px_rgba(0,0,0,0.05)] rounded-t-2xl z-50">
+<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-blue-500 transition-transform active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-blue-500 transition-transform active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined mb-1">assignment</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-600 bg-blue-50 rounded-xl px-3 py-1 transition-transform active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-blue-500 transition-transform active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined mb-1">trending_up</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-blue-500 transition-transform active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>
