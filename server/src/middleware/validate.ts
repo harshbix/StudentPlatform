@@ -10,14 +10,14 @@ export function validateBody(schema: ZodTypeAny) {
 
 export function validateParams(schema: ZodTypeAny) {
   return (req: Request, _res: Response, next: NextFunction) => {
-    req.params = schema.parse(req.params);
+    req.params = schema.parse(req.params) as Request["params"];
     next();
   };
 }
 
 export function validateQuery(schema: ZodTypeAny) {
   return (req: Request, _res: Response, next: NextFunction) => {
-    req.query = schema.parse(req.query);
+    req.query = schema.parse(req.query) as Request["query"];
     next();
   };
 }
