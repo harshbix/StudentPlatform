@@ -15,7 +15,7 @@ universitiesRouter.post(
   validateBody(universityCreateSchema),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    ensure(auth.roles.some((r) => r.role === "super_admin"), "Only super admin can create universities");
+    ensure(auth.roles.some((r) => r.role === "platform_admin"), "Only super admin can create universities");
 
     const { data, error } = await supabaseAdmin.from("universities").insert(req.body).select("*").single();
     if (error) throw error;
@@ -27,7 +27,7 @@ universitiesRouter.get(
   "/universities",
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    if (auth.roles.some((r) => r.role === "super_admin")) {
+    if (auth.roles.some((r) => r.role === "platform_admin")) {
       const { data, error } = await supabaseAdmin.from("universities").select("*").order("created_at", { ascending: false });
       if (error) throw error;
       return res.json(data);
@@ -47,7 +47,7 @@ universitiesRouter.get(
     const auth = requireAuthContext(req);
     const id = req.params.id;
     const allowed = auth.roles.some(
-      (r) => r.role === "super_admin" || (r.role === "university_admin" && r.university_id === id),
+      (r) => r.role === "platform_admin" || (r.role === "university_admin" && r.university_id === id),
     );
     ensure(allowed, "Cannot access this university");
 
@@ -63,7 +63,7 @@ universitiesRouter.patch(
   validateBody(universityUpdateSchema),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    ensure(auth.roles.some((r) => r.role === "super_admin"), "Only super admin can update universities");
+    ensure(auth.roles.some((r) => r.role === "platform_admin"), "Only super admin can update universities");
 
     const { data, error } = await supabaseAdmin
       .from("universities")

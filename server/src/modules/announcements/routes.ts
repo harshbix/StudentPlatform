@@ -19,13 +19,13 @@ announcementsRouter.post(
     const payload = { ...req.body, created_by: auth.userId };
     const scope = req.body.scope;
 
-    const isClassRep = auth.roles.some((r) => r.role === "class_rep");
-    const isUniversityAdmin = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], req.body.university_id);
-    const isStudentOrg = hasRoleInUniversity(auth.roles, ["super_admin", "student_organisation"], req.body.university_id);
+    const isClassRep = auth.roles.some((r) => r.role === "class_representative");
+    const isUniversityAdmin = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], req.body.university_id);
+    const isStudentOrg = hasRoleInUniversity(auth.roles, ["platform_admin", "student_organisation"], req.body.university_id);
 
     if (isClassRep) {
       ensure(scope === "class", "Class Rep can only publish class announcements");
-      const repClassIds = auth.roles.filter((r) => r.role === "class_rep").map((r) => r.class_id);
+      const repClassIds = auth.roles.filter((r) => r.role === "class_representative").map((r) => r.class_id);
       ensure(repClassIds.includes(req.body.class_id), "Class Rep can only publish for own class");
     } else if (isUniversityAdmin) {
       ensure(["class", "department", "university"].includes(scope), "Invalid scope for university admin");
@@ -99,7 +99,7 @@ announcementsRouter.get(
     if (error) throw error;
 
     const sameUniversity = data.university_id === profile.university_id;
-    const isSuperAdmin = auth.roles.some((r) => r.role === "super_admin");
+    const isSuperAdmin = auth.roles.some((r) => r.role === "platform_admin");
     ensure(isSuperAdmin || sameUniversity, "Cannot view this announcement");
 
     res.json(data);

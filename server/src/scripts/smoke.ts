@@ -13,7 +13,7 @@ async function login(email: string) {
 
 async function main() {
   const [superToken, uniToken, repCandidateToken, studentToken] = await Promise.all([
-    login("super_admin@studentplatform.local"),
+    login("platform_admin@studentplatform.local"),
     login("uni_admin@spu.local"),
     login("classrep_candidate@spu.local"),
     login("student1@spu.local"),

@@ -21,7 +21,7 @@ classesRouter.post(
   validateBody(createClassSchema),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    const allowed = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], req.body.university_id);
+    const allowed = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], req.body.university_id);
     ensure(allowed, "Cannot create class in this university");
 
     const payload = { ...req.body, created_by: auth.userId };
@@ -44,7 +44,7 @@ classesRouter.patch(
       .single();
     if (e1) throw e1;
 
-    const allowed = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], existing.university_id);
+    const allowed = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], existing.university_id);
     ensure(allowed, "Cannot update this class");
 
     const { data, error } = await supabaseAdmin
@@ -72,7 +72,7 @@ classesRouter.post(
       .single();
     if (e1) throw e1;
 
-    const allowed = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], cls.university_id);
+    const allowed = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], cls.university_id);
     ensure(allowed, "Cannot assign student to this class");
 
     const { data, error } = await supabaseAdmin
@@ -106,7 +106,7 @@ classesRouter.post(
       .single();
     if (e1) throw e1;
 
-    const allowed = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], cls.university_id);
+    const allowed = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], cls.university_id);
     ensure(allowed, "Cannot assign class rep for this class");
 
     const { data: approvedRequest, error: reqErr } = await supabaseAdmin
@@ -122,7 +122,7 @@ classesRouter.post(
 
     const { error: roleError } = await supabaseAdmin
       .from("user_roles")
-      .insert({ user_id, role: "class_rep", university_id: cls.university_id, class_id });
+      .insert({ user_id, role: "class_representative", university_id: cls.university_id, class_id });
     if (roleError && (roleError as { code?: string }).code !== "23505") throw roleError;
 
     const { data, error } = await supabaseAdmin

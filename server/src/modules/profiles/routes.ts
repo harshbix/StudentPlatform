@@ -49,7 +49,7 @@ profilesRouter.get(
     const auth = requireAuthContext(req);
     const profile = requireProfile(req);
 
-    const canView = auth.roles.some((r) => ["class_rep", "student", "university_admin", "super_admin"].includes(r.role));
+    const canView = auth.roles.some((r) => ["class_representative", "student", "university_admin", "platform_admin"].includes(r.role));
     ensure(canView, "Role cannot list class members");
 
     const classId = profile.class_id;
@@ -79,12 +79,12 @@ profilesRouter.get(
     if (error) throw error;
 
     const isSelf = auth.userId === target.id;
-    const isSuperAdmin = auth.roles.some((r) => r.role === "super_admin");
+    const isSuperAdmin = auth.roles.some((r) => r.role === "platform_admin");
     const isUniversityAdmin = auth.roles.some(
       (r) => r.role === "university_admin" && r.university_id === target.university_id,
     );
     const isClassScoped = auth.roles.some(
-      (r) => ["class_rep", "student"].includes(r.role) && r.class_id === target.class_id,
+      (r) => ["class_representative", "student"].includes(r.role) && r.class_id === target.class_id,
     );
 
     ensure(isSelf || isSuperAdmin || isUniversityAdmin || isClassScoped, "Cannot view this profile");

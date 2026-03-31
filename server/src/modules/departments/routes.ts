@@ -15,7 +15,7 @@ departmentsRouter.post(
   validateBody(createDepartmentSchema),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    const allowed = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], req.body.university_id);
+    const allowed = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], req.body.university_id);
     ensure(allowed, "Cannot create department in this university");
 
     const { data, error } = await supabaseAdmin.from("departments").insert(req.body).select("*").single();
@@ -30,7 +30,7 @@ departmentsRouter.get(
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
     const universityId = String(req.params.id);
-    const allowed = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], universityId);
+    const allowed = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], universityId);
     ensure(allowed, "Cannot view departments for this university");
 
     const { data, error } = await supabaseAdmin
@@ -57,7 +57,7 @@ departmentsRouter.patch(
       .single();
     if (e1) throw e1;
 
-    const allowed = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], existing.university_id);
+    const allowed = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], existing.university_id);
     ensure(allowed, "Cannot update this department");
 
     const { data, error } = await supabaseAdmin

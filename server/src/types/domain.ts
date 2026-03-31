@@ -1,8 +1,8 @@
 export type RoleType =
-  | "super_admin"
+  | "platform_admin"
   | "university_admin"
   | "student_organisation"
-  | "class_rep"
+  | "class_representative"
   | "student";
 
 export type RoleScope = {

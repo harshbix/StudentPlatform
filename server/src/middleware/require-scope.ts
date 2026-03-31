@@ -9,7 +9,7 @@ export function hasRoleInUniversity(
   return roles.some(
     (r) =>
       allowedRoles.includes(r.role) &&
-      (r.role === "super_admin" || r.university_id === universityId),
+      (r.role === "platform_admin" || r.university_id === universityId),
   );
 }
 
@@ -18,7 +18,7 @@ export function hasRoleInClass(
   allowedRoles: RoleType[],
   classId: string,
 ) {
-  return roles.some((r) => allowedRoles.includes(r.role) && (r.role === "super_admin" || r.class_id === classId));
+  return roles.some((r) => allowedRoles.includes(r.role) && (r.role === "platform_admin" || r.class_id === classId));
 }
 
 export function ensure(condition: boolean, message = "Insufficient scope") {

@@ -9,7 +9,7 @@ import { requireAuthContext } from "../../utils/auth-context";
 
 const assignRoleSchema = z.object({
   user_id: z.string().uuid(),
-  role: z.enum(["super_admin", "university_admin", "student_organisation", "class_rep", "student"]),
+  role: z.enum(["platform_admin", "university_admin", "student_organisation", "class_representative", "student"]),
   university_id: z.string().uuid().nullable().optional(),
   class_id: z.string().uuid().nullable().optional(),
 });
@@ -32,17 +32,17 @@ rolesRouter.post(
     const auth = requireAuthContext(req);
     const { user_id, role, university_id = null, class_id = null } = req.body;
 
-    if (role === "super_admin") {
-      ensure(auth.roles.some((r) => r.role === "super_admin"), "Only super admin can assign super admin role");
+    if (role === "platform_admin") {
+      ensure(auth.roles.some((r) => r.role === "platform_admin"), "Only super admin can assign super admin role");
     } else {
       ensure(!!university_id, "university_id is required for this role");
-      const canAssign = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], university_id);
+      const canAssign = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], university_id);
       ensure(canAssign, "Cannot assign role in this university");
 
       if (role === "university_admin" || role === "student_organisation") {
-        ensure(auth.roles.some((r) => r.role === "super_admin"), "Only super admin can assign university-level web roles");
+        ensure(auth.roles.some((r) => r.role === "platform_admin"), "Only super admin can assign university-level web roles");
       }
-      if (role === "class_rep" || role === "student") ensure(!!class_id, "class_id is required for class scoped role");
+      if (role === "class_representative" || role === "student") ensure(!!class_id, "class_id is required for class scoped role");
     }
 
     const { data, error } = await supabaseAdmin

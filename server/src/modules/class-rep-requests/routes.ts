@@ -64,7 +64,7 @@ classRepRequestsRouter.get(
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
     const universityId = String(req.params.id);
-    const allowed = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], universityId);
+    const allowed = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], universityId);
     ensure(allowed, "Cannot view requests for this university");
 
     const { data, error } = await supabaseAdmin
@@ -92,7 +92,7 @@ classRepRequestsRouter.patch(
       .single();
     if (e1) throw e1;
 
-    const allowed = hasRoleInUniversity(auth.roles, ["super_admin", "university_admin"], existing.university_id);
+    const allowed = hasRoleInUniversity(auth.roles, ["platform_admin", "university_admin"], existing.university_id);
     ensure(allowed, "Cannot review this request");
 
     const updatePayload = {
@@ -114,7 +114,7 @@ classRepRequestsRouter.patch(
     if (data.status === "approved") {
       const { error: roleError } = await supabaseAdmin.from("user_roles").insert({
         user_id: data.requester_id,
-        role: "class_rep",
+        role: "class_representative",
         university_id: data.university_id,
         class_id: data.class_id,
       });

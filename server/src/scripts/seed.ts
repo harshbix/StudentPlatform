@@ -5,11 +5,11 @@ const PASSWORD = "Passw0rd!123";
 type SeedUser = {
   email: string;
   fullName: string;
-  role: "super_admin" | "university_admin" | "student_organisation" | "student";
+  role: "platform_admin" | "university_admin" | "student_organisation" | "student";
 };
 
 const users: SeedUser[] = [
-  { email: "super_admin@studentplatform.local", fullName: "Super Admin", role: "super_admin" },
+  { email: "platform_admin@studentplatform.local", fullName: "Super Admin", role: "platform_admin" },
   { email: "uni_admin@spu.local", fullName: "University Admin", role: "university_admin" },
   { email: "student_org@spu.local", fullName: "Student Organisation", role: "student_organisation" },
   { email: "classrep_candidate@spu.local", fullName: "Class Rep Candidate", role: "student" },
@@ -42,7 +42,7 @@ async function ensureUser(email: string, password: string) {
 async function ensureRole(userId: string, role: SeedUser["role"], universityId: string, classId: string | null) {
   let query = supabaseAdmin.from("user_roles").select("id").eq("user_id", userId).eq("role", role);
 
-  if (role === "super_admin") {
+  if (role === "platform_admin") {
     query = query.is("university_id", null).is("class_id", null);
   } else if (role === "student") {
     query = query.eq("university_id", universityId).eq("class_id", classId);
@@ -57,7 +57,7 @@ async function ensureRole(userId: string, role: SeedUser["role"], universityId: 
   const payload = {
     user_id: userId,
     role,
-    university_id: role === "super_admin" ? null : universityId,
+    university_id: role === "platform_admin" ? null : universityId,
     class_id: role === "student" ? classId : null,
   };
 
@@ -107,7 +107,7 @@ async function main() {
     const profilePayload = {
       id: userId,
       full_name: u.fullName,
-      university_id: u.role === "super_admin" ? null : universityId,
+      university_id: u.role === "platform_admin" ? null : universityId,
       class_id: u.role === "student" ? classId : null,
       status: "active" as const,
     };

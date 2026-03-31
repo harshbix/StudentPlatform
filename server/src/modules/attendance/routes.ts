@@ -18,7 +18,7 @@ attendanceRouter.post(
   validateBody(createSessionSchema),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    ensure(hasRoleInClass(auth.roles, ["class_rep", "super_admin"], req.body.class_id), "Cannot start session for this class");
+    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], req.body.class_id), "Cannot start session for this class");
 
     const payload = {
       class_id: req.body.class_id,
@@ -121,7 +121,7 @@ attendanceRouter.patch(
     const classId = (Array.isArray(existing.attendance_sessions)
       ? existing.attendance_sessions[0]?.class_id
       : (existing.attendance_sessions as { class_id: string }).class_id) as string;
-    ensure(hasRoleInClass(auth.roles, ["class_rep", "super_admin"], classId), "Cannot update attendance for this class");
+    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], classId), "Cannot update attendance for this class");
 
     const payload = {
       status: req.body.status,
@@ -154,7 +154,7 @@ attendanceRouter.patch(
       .single();
     if (e1) throw e1;
 
-    ensure(hasRoleInClass(auth.roles, ["class_rep", "super_admin"], session.class_id), "Cannot close this session");
+    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], session.class_id), "Cannot close this session");
 
     const payload = {
       status: req.body.status,

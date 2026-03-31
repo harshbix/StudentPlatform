@@ -15,7 +15,7 @@ tasksRouter.post(
   validateBody(createTaskSchema),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    ensure(hasRoleInClass(auth.roles, ["class_rep", "super_admin"], req.body.class_id), "Cannot create task for this class");
+    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], req.body.class_id), "Cannot create task for this class");
 
     const payload = { ...req.body, created_by: auth.userId };
     const { data, error } = await supabaseAdmin.from("tasks").insert(payload).select("*").single();
@@ -46,7 +46,7 @@ tasksRouter.patch(
     const auth = requireAuthContext(req);
     const { data: existing, error: e1 } = await supabaseAdmin.from("tasks").select("id,class_id").eq("id", req.params.id).single();
     if (e1) throw e1;
-    ensure(hasRoleInClass(auth.roles, ["class_rep", "super_admin"], existing.class_id), "Cannot edit this task");
+    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], existing.class_id), "Cannot edit this task");
 
     const { data, error } = await supabaseAdmin.from("tasks").update(req.body).eq("id", req.params.id).select("*").single();
     if (error) throw error;
@@ -61,7 +61,7 @@ tasksRouter.delete(
     const auth = requireAuthContext(req);
     const { data: existing, error: e1 } = await supabaseAdmin.from("tasks").select("id,class_id").eq("id", req.params.id).single();
     if (e1) throw e1;
-    ensure(hasRoleInClass(auth.roles, ["class_rep", "super_admin"], existing.class_id), "Cannot delete this task");
+    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], existing.class_id), "Cannot delete this task");
 
     const { error } = await supabaseAdmin.from("tasks").delete().eq("id", req.params.id);
     if (error) throw error;
@@ -85,8 +85,8 @@ tasksRouter.get(
       return res.json(data);
     }
 
-    if (auth.roles.some((r) => r.role === "class_rep")) {
-      const classIds = auth.roles.filter((r) => r.role === "class_rep").map((r) => r.class_id).filter(Boolean);
+    if (auth.roles.some((r) => r.role === "class_representative")) {
+      const classIds = auth.roles.filter((r) => r.role === "class_representative").map((r) => r.class_id).filter(Boolean);
       const { data, error } = await supabaseAdmin.from("tasks").select("*").in("class_id", classIds as string[]);
       if (error) throw error;
       return res.json(data);
@@ -106,7 +106,7 @@ tasksRouter.get(
     const { data, error } = await supabaseAdmin.from("tasks").select("*").eq("id", req.params.id).single();
     if (error) throw error;
 
-    const isClassRep = hasRoleInClass(auth.roles, ["class_rep", "super_admin"], data.class_id);
+    const isClassRep = hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], data.class_id);
     const isStudentInClass = auth.roles.some((r) => r.role === "student") && profile.class_id === data.class_id;
     ensure(isClassRep || isStudentInClass, "Cannot access this task");
 

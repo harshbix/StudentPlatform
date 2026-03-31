@@ -68,7 +68,7 @@ submissionsRouter.get(
 
     const { data: task, error: e1 } = await supabaseAdmin.from("tasks").select("id,class_id").eq("id", taskId).single();
     if (e1) throw e1;
-    ensure(hasRoleInClass(auth.roles, ["class_rep", "super_admin"], task.class_id), "Cannot list submissions for this task");
+    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], task.class_id), "Cannot list submissions for this task");
 
     const { data, error } = await supabaseAdmin.from("submissions").select("*").eq("task_id", taskId).order("submitted_at", { ascending: false });
     if (error) throw error;
@@ -87,7 +87,7 @@ submissionsRouter.get(
     if (error) throw error;
 
     const classId = data.tasks.class_id as string;
-    const canRepView = hasRoleInClass(auth.roles, ["class_rep", "super_admin"], classId);
+    const canRepView = hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], classId);
     const canStudentView = auth.roles.some((r) => r.role === "student") && data.student_id === auth.userId && profile.class_id === classId;
 
     ensure(canRepView || canStudentView, "Cannot view this submission");
@@ -112,7 +112,7 @@ submissionsRouter.patch(
     const classId = (Array.isArray(existing.tasks)
       ? existing.tasks[0]?.class_id
       : (existing.tasks as { class_id: string }).class_id) as string;
-    ensure(hasRoleInClass(auth.roles, ["class_rep", "super_admin"], classId), "Cannot review submissions for this class");
+    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], classId), "Cannot review submissions for this class");
 
     const payload = {
       status: req.body.status,
