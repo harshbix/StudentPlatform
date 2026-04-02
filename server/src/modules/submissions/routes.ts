@@ -1,31 +1,30 @@
 import { Router } from "express";
 import { asyncHandler } from "../../lib/async-handler";
 import { requireAuth } from "../../middleware/auth";
-import { validateBody, validateParams } from "../../middleware/validate";
-import { createSubmissionSchema, idParam, reviewSubmissionSchema } from "./schemas";
+import { requireRole, requireResourceAccess } from "../../middleware/auth-pipeline";
+import { validateBody, validateParams, validateQuery } from "../../middleware/validate";       
+import { createSubmissionSchema, idParam, reviewSubmissionSchema, paginationSchema } from "./schemas";
 import { supabaseAdmin } from "../../config/supabase";
-import { ensure, hasRoleInClass } from "../../middleware/require-scope";
-import { requireAuthContext, requireProfile } from "../../utils/auth-context";
-import { conflict } from "../../utils/errors";
+import { ensure } from "../../middleware/require-scope";        
+import { requireAuthContext, requireProfile } from "../../utils/auth-context";  
+import { conflict, forbidden } from "../../utils/errors";
 import { addStreakActivity } from "../../utils/streak";
 
 export const submissionsRouter = Router();
 submissionsRouter.use(requireAuth);
 
+// 1. CREATE SUBMISSION
 submissionsRouter.post(
   "/submissions",
+  requireRole(["student", "platform_admin"]),
   validateBody(createSubmissionSchema),
+  // We use requireResourceAccess to lookup the task they're uploading to, enforcing class boundary and retrieving the entity without double-querying it inside.
+  requireResourceAccess("tasks", { classColumn: "class_id", paramKey: "task_id" }),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    const profile = requireProfile(req);
-    ensure(auth.roles.some((r) => r.role === "student"), "Only students can submit tasks");
+    const task = req.resource;
 
-    const { data: task, error: taskErr } = await supabaseAdmin.from("tasks").select("id,class_id,due_at,status").eq("id", req.body.task_id).single();
-    if (taskErr) throw taskErr;
-
-    ensure(profile.class_id === task.class_id, "Cannot submit for another class task");
     ensure(task.status !== "closed", "Task is closed");
-
     const now = new Date();
     ensure(new Date(task.due_at) >= now, "Task deadline has passed");
 
@@ -59,60 +58,78 @@ submissionsRouter.post(
   }),
 );
 
+// 2. LIST SUBMISSIONS FOR TASK
 submissionsRouter.get(
   "/submissions/task/:id",
+  requireRole(["student", "class_representative", "platform_admin"]),
   validateParams(idParam),
+  validateQuery(paginationSchema),
+  requireResourceAccess("tasks", { classColumn: "class_id" }),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
     const taskId = req.params.id;
+    const { limit, offset } = req.query as any;
 
-    const { data: task, error: e1 } = await supabaseAdmin.from("tasks").select("id,class_id").eq("id", taskId).single();
-    if (e1) throw e1;
-    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], task.class_id), "Cannot list submissions for this task");
+    let query = supabaseAdmin
+      .from("submissions")
+      .select("*", { count: "exact" })
+      .eq("task_id", taskId)
+      .order("submitted_at", { ascending: false })
+      .range(offset, offset + limit - 1);
 
-    const { data, error } = await supabaseAdmin.from("submissions").select("*").eq("task_id", taskId).order("submitted_at", { ascending: false });
+    // Students can only see their own submissions in a list
+    const isOnlyStudent = auth.roles.every((r) => r.role === "student");
+    if (isOnlyStudent) {
+      query = query.eq("student_id", auth.userId);
+    }
+
+    const { data, error, count } = await query;
+      
     if (error) throw error;
-    res.json(data);
+    res.json({ data, meta: { total: count || 0, limit, offset } });
   }),
 );
 
+// 3. GET SINGLE SUBMISSION
 submissionsRouter.get(
   "/submissions/:id",
+  requireRole(["student", "class_representative", "platform_admin"]),
   validateParams(idParam),
+  requireResourceAccess("submissions", { 
+    ownerColumn: "student_id", 
+    classColumn: "tasks.class_id",
+    selectQuery: "*, tasks!inner(class_id)" 
+  }),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    const profile = requireProfile(req);
+    const isOnlyStudent = auth.roles.every((r) => r.role === "student");
+    
+    if (isOnlyStudent && req.resource.student_id !== auth.userId) {
+      throw forbidden("Cannot access other student submission");
+    }
 
-    const { data, error } = await supabaseAdmin.from("submissions").select("*, tasks!inner(class_id)").eq("id", req.params.id).single();
-    if (error) throw error;
-
-    const classId = data.tasks.class_id as string;
-    const canRepView = hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], classId);
-    const canStudentView = auth.roles.some((r) => r.role === "student") && data.student_id === auth.userId && profile.class_id === classId;
-
-    ensure(canRepView || canStudentView, "Cannot view this submission");
-    res.json(data);
+    // req.resource is injected by requireResourceAccess and boundary-checked
+    res.json(req.resource);
   }),
 );
 
+// 4. REVIEW SUBMISSION
 submissionsRouter.patch(
   "/submissions/:id/review",
+  requireRole(["class_representative", "platform_admin"]),
   validateParams(idParam),
   validateBody(reviewSubmissionSchema),
+  requireResourceAccess("submissions", { 
+    classColumn: "tasks.class_id",
+    selectQuery: "*, tasks!inner(class_id)" 
+  }),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
+    const existing = req.resource;
 
-    const { data: existing, error: e1 } = await supabaseAdmin
-      .from("submissions")
-      .select("id, student_id, task_id, tasks!inner(class_id)")
-      .eq("id", req.params.id)
-      .single();
-    if (e1) throw e1;
-
-    const classId = (Array.isArray(existing.tasks)
-      ? existing.tasks[0]?.class_id
-      : (existing.tasks as { class_id: string }).class_id) as string;
-    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], classId), "Cannot review submissions for this class");
+    if (existing.status !== "submitted") {
+      throw conflict("Submission has already been reviewed");
+    }
 
     const payload = {
       status: req.body.status,

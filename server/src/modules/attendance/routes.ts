@@ -2,10 +2,11 @@ import { Router } from "express";
 import { asyncHandler } from "../../lib/async-handler";
 import { z } from "zod";
 import { requireAuth } from "../../middleware/auth";
-import { validateBody, validateParams } from "../../middleware/validate";
+import { requireRole, requireScope, requireResourceAccess } from "../../middleware/auth-pipeline";
+import { validateBody, validateParams } from "../../middleware/validate";       
 import { closeSessionSchema, createSessionSchema, idParam, markAttendanceSchema } from "./schemas";
-import { requireAuthContext, requireProfile } from "../../utils/auth-context";
-import { ensure, hasRoleInClass } from "../../middleware/require-scope";
+import { requireAuthContext } from "../../utils/auth-context";  
+import { ensure } from "../../middleware/require-scope";        
 import { supabaseAdmin } from "../../config/supabase";
 import { conflict } from "../../utils/errors";
 import { addStreakActivity } from "../../utils/streak";
@@ -15,10 +16,11 @@ attendanceRouter.use(requireAuth);
 
 attendanceRouter.post(
   "/attendance/sessions",
+  requireRole(["class_representative", "platform_admin"]),
   validateBody(createSessionSchema),
+  requireScope("class", "class_id"),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], req.body.class_id), "Cannot start session for this class");
 
     const payload = {
       class_id: req.body.class_id,
@@ -34,11 +36,11 @@ attendanceRouter.post(
     const { data, error } = await supabaseAdmin.from("attendance_sessions").insert(payload).select("*").single();
     if (error) throw error;
 
-    const { data: members } = await supabaseAdmin.from("profiles").select("id").eq("class_id", req.body.class_id);
+    const { data: members } = await supabaseAdmin.from("user_roles").select("user_id").eq("class_id", req.body.class_id).eq("role", "student");
     if (members?.length) {
       await supabaseAdmin.from("notifications").insert(
         members.map((m) => ({
-          user_id: m.id,
+          user_id: m.user_id,
           type: "attendance_session_started",
           title: "Attendance session started",
           body: "Mark your attendance within the active window",
@@ -53,22 +55,15 @@ attendanceRouter.post(
 
 attendanceRouter.post(
   "/attendance/records",
+  requireRole(["student", "platform_admin"]),
   validateBody(markAttendanceSchema),
+  requireResourceAccess("attendance_sessions", { classColumn: "class_id", paramKey: "session_id" }),
   asyncHandler(async (req, res) => {
     const auth = requireAuthContext(req);
-    const profile = requireProfile(req);
-    ensure(auth.roles.some((r) => r.role === "student"), "Only students can self-mark attendance");
-
-    const { data: session, error: e1 } = await supabaseAdmin
-      .from("attendance_sessions")
-      .select("*")
-      .eq("id", req.body.session_id)
-      .single();
-    if (e1) throw e1;
+    const session = req.resource;
 
     const now = new Date();
-    ensure(session.class_id === profile.class_id, "Cannot mark attendance for another class");
-    ensure(session.status === "active", "Attendance session is not active");
+    ensure(session.status === "active", "Attendance session is not active");    
     ensure(new Date(session.starts_at) <= now && now <= new Date(session.ends_at), "Outside attendance window");
 
     const payload = {
@@ -101,6 +96,7 @@ attendanceRouter.post(
 
 attendanceRouter.patch(
   "/attendance/records/:id",
+  requireRole(["class_representative", "platform_admin"]),
   validateParams(idParam),
   validateBody(
     z.object({
@@ -108,20 +104,12 @@ attendanceRouter.patch(
       verification_photo_url: z.string().url().optional(),
     }),
   ),
+  requireResourceAccess("attendance_records", {
+    classColumn: "attendance_sessions.class_id",
+    selectQuery: "*, attendance_sessions!inner(class_id)"
+  }),
   asyncHandler(async (req, res) => {
-    const auth = requireAuthContext(req);
-
-    const { data: existing, error: e1 } = await supabaseAdmin
-      .from("attendance_records")
-      .select("id, session_id, attendance_sessions!inner(class_id)")
-      .eq("id", req.params.id)
-      .single();
-    if (e1) throw e1;
-
-    const classId = (Array.isArray(existing.attendance_sessions)
-      ? existing.attendance_sessions[0]?.class_id
-      : (existing.attendance_sessions as { class_id: string }).class_id) as string;
-    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], classId), "Cannot update attendance for this class");
+    const existing = req.resource;
 
     const payload = {
       status: req.body.status,
@@ -142,20 +130,11 @@ attendanceRouter.patch(
 
 attendanceRouter.patch(
   "/attendance/sessions/:id/close",
+  requireRole(["class_representative", "platform_admin"]),
   validateParams(idParam),
   validateBody(closeSessionSchema),
+  requireResourceAccess("attendance_sessions", { classColumn: "class_id" }),
   asyncHandler(async (req, res) => {
-    const auth = requireAuthContext(req);
-
-    const { data: session, error: e1 } = await supabaseAdmin
-      .from("attendance_sessions")
-      .select("id,class_id")
-      .eq("id", req.params.id)
-      .single();
-    if (e1) throw e1;
-
-    ensure(hasRoleInClass(auth.roles, ["class_representative", "platform_admin"], session.class_id), "Cannot close this session");
-
     const payload = {
       status: req.body.status,
       suspicious: req.body.suspicious ?? req.body.status === "flagged",
